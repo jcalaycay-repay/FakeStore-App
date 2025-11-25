@@ -10,7 +10,7 @@ final router = GoRouter(
       routes: [
         GoRoute(
           path: "/",
-          name: "Home",
+          name: "home",
           builder: (context, state) => BlocProvider<HomePageCubit>(
             create: (context) => HomePageCubit(),
             child: HomePage(),
@@ -22,7 +22,7 @@ final router = GoRouter(
         // ),
         GoRoute(
           path: "/account",
-          name: "Account",
+          name: "account",
           builder: (context, state) => BlocProvider(
             create: (context) => AccountPageCubit(),
             child: AccountPage(),

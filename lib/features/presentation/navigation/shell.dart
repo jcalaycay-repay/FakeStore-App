@@ -26,20 +26,13 @@ class _MainShellState extends State<MainShell> {
       ),
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home"
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.cart),
-            label: "Cart"
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Account"
-          ),
-        ],
+        items: RoutePage.values.map(
+          (page) => BottomNavigationBarItem(
+            icon: page.getIcon(),
+            label: page.name
+          )
+        ).toList(),
+        onTap:(value) => context.goNamed(RoutePage.values[value].name),
       ),
 
     );

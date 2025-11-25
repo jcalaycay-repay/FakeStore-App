@@ -11,3 +11,5 @@ part '../../../features/data/bloc/account_cubit/state.dart';
 
 // Presentation
 part '../../../features/presentation/pages/account/main.dart';
+part '../../../features/presentation/pages/account/states/loading.dart';
+part '../../../features/presentation/pages/account/states/loaded.dart';

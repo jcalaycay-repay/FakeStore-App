@@ -17,6 +17,12 @@ class _AccountPageState extends State<AccountPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return BlocBuilder<AccountPageCubit, AccountPageState>(
+      builder: (context, state) => switch(state) {
+        AccountInitialState() || AccountLoadingState() => AccountLoadingPage(),
+        AccountLoadedState(: var user) => AccountLoadedPage(user: user),
+        _ => throw UnimplementedError("Invalid Account Page State")
+      }
+    );
   }
 }
