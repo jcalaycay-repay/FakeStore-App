@@ -4,22 +4,13 @@ import 'package:flutter/material.dart';
 
 class ListViewProductCard extends StatelessWidget {
   final Product item;
-  const ListViewProductCard({
-    required this.item,
-    super.key
-  });
+  const ListViewProductCard({required this.item, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 150,
       padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 1,
-          color: Colors.grey.shade500
-        )
-      ),
       child: Row(
         spacing: 16,
         children: [
@@ -27,8 +18,8 @@ class ListViewProductCard extends StatelessWidget {
             flex: 3,
             child: CachedNetworkImage(
               imageUrl: item.imageUrl,
-            )
-            
+            ),
+
             // Image.network(
             //   fit: BoxFit.fill,
             //   item.imageUrl,
@@ -43,17 +34,17 @@ class ListViewProductCard extends StatelessWidget {
             //         )
             //       ),
             //     );
-              // },
-              // loadingBuilder: (context, child, loadingProgress) => Shimmer(
-              //   color: Colors.grey.shade400,
-              //   child: Container(
-              //     height: 20,
-              //     width: 20,
-              //     child: Text(
-              //       "${(loadingProgress!.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!) * 100}%"
-              //     ),
-              //   )
-              // ),
+            // },
+            // loadingBuilder: (context, child, loadingProgress) => Shimmer(
+            //   color: Colors.grey.shade400,
+            //   child: Container(
+            //     height: 20,
+            //     width: 20,
+            //     child: Text(
+            //       "${(loadingProgress!.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!) * 100}%"
+            //     ),
+            //   )
+            // ),
             // ),
           ),
           Expanded(
@@ -69,19 +60,16 @@ class ListViewProductCard extends StatelessWidget {
                   maxLines: 2,
                 ),
                 Text(
-                  "\$${item.price}",
+                  "\$${item.price.toStringAsFixed(2)}",
                   style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.error
+                    color: Theme.of(context).colorScheme.error,
                   ),
                 ),
-                Text(
-                  "Product #${item.id}"
-                ),
+                Text("Product #${item.id}"),
               ],
             ),
-          )
-          
+          ),
         ],
       ),
     );
