@@ -2,7 +2,7 @@ import 'dart:developer' as dev;
 import 'dart:math';
 
 import 'package:fakestore/core/dio/dio.dart';
-import 'package:fakestore/core/local_storages/secure_cache.dart';
+import 'package:fakestore/core/local_storages/secure.cache.dart';
 import 'package:fakestore/features/data/implementation/models/user.models/user.model.dart';
 import 'package:fakestore/features/domain/blueprints/account.dart';
 

@@ -1,19 +1,23 @@
-import 'package:fakestore/core/libraries/router.dart';
+ import 'package:fakestore/core/libraries/router.dart';
 import 'package:fakestore/core/dio/dio.dart';
 import 'package:fakestore/core/local_storages/cache.dart';
-import 'package:fakestore/core/local_storages/secure_cache.dart';
+import 'package:fakestore/core/local_storages/secure.cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await dotenv.load();
-  
-  configureDio();
+  await Future.wait([
+    dotenv.load(),
+    
+    configureDio(),
 
-  await NormalCache.init();
-  await SecureCache.init();
+    NormalCache.init(),
+    SecureCache.init(),
+
+  ]).timeout()
+
 
   runApp(const MyApp());
 }

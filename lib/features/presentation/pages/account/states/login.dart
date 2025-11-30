@@ -9,10 +9,14 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   late final GlobalKey<FormState> formKey;
+  late final FocusNode usernameNode;
+  late final FocusNode passwordNode;
 
   @override
   void initState() {
     formKey = GlobalKey<FormState>();
+    usernameNode = FocusNode();
+    passwordNode = FocusNode();    
     super.initState();
   }
 
@@ -31,10 +35,13 @@ class _LoginPageState extends State<LoginPage> {
             TextFormField(
               controller: state.username,
               validator: (value) => requiredField(value!),
+              onTapOutside: (event) => usernameNode.unfocus(),
+              decoration: generalInputStyle(),
             ),
             TextFormField(
               controller: state.password,
               obscureText: true,
+              onTapOutside: (event) => passwordNode.unfocus(),
             ),
             GestureDetector(
               onTap: () => accountCubit.submitForm(state.toMap()),

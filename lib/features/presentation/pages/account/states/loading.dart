@@ -6,8 +6,7 @@ class AccountLoadingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      // TODO: Implement Shimmer Loading UI
-      child: CircularProgressIndicator(),
+      child: CircularProgressIndicator.adaptive(),
     );
   }
 }

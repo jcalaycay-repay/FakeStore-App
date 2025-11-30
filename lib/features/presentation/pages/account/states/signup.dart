@@ -9,46 +9,65 @@ class SignupPage extends StatelessWidget {
     final signupState = (accountContext.state as SignupState);
     final screen = MediaQuery.sizeOf(context);
 
+    final FocusNode usernameNode = FocusNode();
+    final FocusNode emailNode = FocusNode();
+    final FocusNode passwordNode = FocusNode();
+    final FocusNode confirmPasswordNode = FocusNode();
+
     return Container(
       height: screen.height,
       padding: EdgeInsets.all(16),
       child: Form(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextFormField(
-              decoration: InputDecoration(
-                label: Text("User Name"),
-                hintText: "User Name",
-              ),
-              controller: signupState.username,
-              // onChanged: (value) => accountContext.updateForm( signupState.copyWith(username: value) ),
+            Column(
+              spacing: 12,
+              children: [
+                TextFormField(
+                  decoration: generalInputStyle(
+                    labelText: "Username"
+                  ),
+                  controller: signupState.username,
+                  focusNode: usernameNode,
+                  validator: (value) => requiredField(value),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                ),
+                TextFormField(
+                  decoration: generalInputStyle(
+                    labelText: "E-mail address",
+                    // hintText: "E-mail address",
+                  ),
+                  controller: signupState.email,
+                  focusNode: emailNode,
+                  validator: (value) => requiredField(value),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                ),
+                TextFormField(
+                  decoration: generalInputStyle(
+                    labelText: "Password"
+                  ),
+                  obscureText: true,
+                  controller: signupState.password,
+                  focusNode: passwordNode,
+                  validator: (value) => requiredField(value),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                ),
+                
+                TextFormField(
+                  decoration: generalInputStyle(
+                    hintText: "Confirm Password"
+                  ),
+                  obscureText: true,
+                  validator: (value) => confirmPassword(value, signupState.password.value.text),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  controller: signupState.confirmPassword,
+                  focusNode: confirmPasswordNode,
+                ),
+              ],
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                label: Text("E-mail address"),
-                hintText: "E-mail address"
-              ),
-              controller: signupState.email,
-              // onChanged: (value) => accountContext.updateForm( signupState.copyWith(email: value) ),
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                label: Text("Password"),
-                hintText: "Password"
-              ),
-              controller: signupState.password,
-              // onChanged: (value) => accountContext.updateForm( signupState.copyWith(password: value) ),
-            ),
+            
 
-            // TODO: implement confirm password
-            TextFormField(
-              decoration: InputDecoration(
-                label: Text("Confirm Password"),
-                hintText: "Confirm Password"
-              ),
-              controller: signupState.confirmPassword,
-              // onChanged: (value) => accountContext.updateForm( signupState.copyWith(confirmPassword: value) ),
-            ),
             GestureDetector(
               onTap: () => accountContext.submitForm(signupState.toMap()),
               child: Container(
