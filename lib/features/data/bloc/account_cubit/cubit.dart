@@ -5,11 +5,9 @@ class AccountPageCubit extends Cubit<AccountPageState> {
 
 
   void init() async {
-    emit(
-      AccountLoadingState()
-    );
+    if(state is! AccountLoadingState ) load();
     
-    final token = await SecureCache.getString("user");
+    final token = await SecureCache.getString(Storage.user);
 
     if( token == null ){
       emit(
@@ -22,12 +20,17 @@ class AccountPageCubit extends Cubit<AccountPageState> {
     }
   }
 
-  void goToLogin() {
-    emit(LoginState.empty());
-  }
+  void logout() async{
+    
+    //  ? Simulate delayed API load
+    load();
+    await Future.delayed(
+      Duration(seconds: 2)
+    );
 
-  void goToSignUp() {
-    emit(SignupState.empty());
+    await SecureCache.delete(Storage.user);
+
+    init();
   }
 
   void updateForm(AccountPageState state) {
@@ -37,18 +40,50 @@ class AccountPageCubit extends Cubit<AccountPageState> {
   } 
 
   void submitForm(Map<String, dynamic> data) async {
-    switch(state){
-      case SignupState(): 
-        await AccountRepository().signup(data); 
-        break;
-      case LoginState(): 
-        await AccountRepository().authLogin(data); 
-        break;
-      default: log("Invalid Form State"); return;
-    };
+    final preservedState = state;
+
+    load();
+
+    await Future.delayed(
+      Duration.zero,
+      () async {
+        switch(preservedState){
+          case SignupState():
+            await AccountRepository().signup(data); 
+            break;
+          case LoginState():
+            await AccountRepository().authLogin(data); 
+            break;
+          default: log("Invalid Form State"); return;
+        };
+      }
+    );
 
     init();
   } 
+
+
+
+  void loadDummyLoginData(){
+    final _state = state as LoginState;
+
+    emit( LoginState(
+      username: TextEditingController(text: 'mor_2314'),
+      password: TextEditingController(text: "83r5^_"),
+    ));
+  }
+
+  void navigateToLogin() {
+    emit(LoginState.empty());
+  }
+
+  void navigateToSignup() {
+    emit(SignupState.empty());
+  }
+
+  void load() {
+    emit(AccountLoadingState());
+  }
 
 
 

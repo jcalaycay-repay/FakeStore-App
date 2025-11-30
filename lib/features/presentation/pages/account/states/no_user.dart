@@ -12,13 +12,13 @@ class NoUserPage extends StatelessWidget {
     return Column(
       children: [
         GestureDetector(
-          onTap: () => accountContext.goToLogin(),
+          onTap: () => accountContext.navigateToLogin(),
           child: Text(
             "Login"
           ),
         ),
         GestureDetector(
-          onTap: () => accountContext.goToSignUp(),
+          onTap: () => accountContext.navigateToSignup(),
           child: Text(
             "Sign Up"
           ),

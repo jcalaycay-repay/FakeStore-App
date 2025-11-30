@@ -1,3 +1,5 @@
+import 'package:fakestore/features/domain/enums/storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SecureCache {
@@ -32,8 +34,16 @@ class SecureCache {
       return success;
   }
 
-  static Future<String?> getString(String key) async {
-    return await _instance!.read(key: key);
+  static Future<String?> getString(Storage key) async {
+    return await _instance!.read(key: key.name);
+  }
+
+  static Future<void> delete(Storage key) async {
+    if(await _instance!.read(key: key.name) != null){
+      return await _instance!.delete(key: key.name);
+    }
+
+    debugPrint("Data does not exist");
   }
 
 
