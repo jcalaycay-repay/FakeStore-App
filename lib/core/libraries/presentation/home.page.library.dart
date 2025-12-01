@@ -2,6 +2,7 @@ library HomePageLibrary;
 
 
 import 'package:equatable/equatable.dart';
+import 'package:fakestore/core/theme/theme.singleton.dart';
 import 'package:fakestore/features/data/implementation/models/product/product.model.dart';
 import 'package:fakestore/features/data/implementation/repositories/product.dart';
 import 'package:fakestore/features/presentation/universal_components/product_cards/list_view.dart';

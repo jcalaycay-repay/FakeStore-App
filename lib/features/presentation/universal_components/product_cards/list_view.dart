@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fakestore/core/theme/theme.singleton.dart';
 import 'package:fakestore/features/data/implementation/models/product/product.model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:go_router/go_router.dart';
 
 class ListViewProductCard extends StatelessWidget {
@@ -49,7 +51,19 @@ class ListViewProductCard extends StatelessWidget {
                       color: Theme.of(context).colorScheme.error,
                     ),
                   ),
-                  Text("Product #${item.id}"),
+                  RatingBar.builder(
+                    initialRating: item.rating.rate,
+                    itemSize: 12,
+                    ignoreGestures: true,
+                    glowColor: ThemeSingleton.defaultTheme!.highlightColor,
+                    itemBuilder: (context, int){
+                      return Icon(
+                        Icons.star,
+                        color: ThemeSingleton.defaultTheme!.colorScheme.primary,
+                      );
+                    }, 
+                    onRatingUpdate: (_) {}
+                  )
                 ],
               ),
             ),
