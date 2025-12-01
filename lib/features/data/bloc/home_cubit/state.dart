@@ -12,7 +12,7 @@ class HomePageInitState extends HomePageState {}
 class HomePageLoadingState extends HomePageState {}
 
 class HomePageLoadedState extends HomePageState {
-  final List<Product> productList;
+  final List<ProductModel> productList;
 
   const HomePageLoadedState({
     required this.productList,

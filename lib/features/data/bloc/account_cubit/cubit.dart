@@ -55,7 +55,7 @@ class AccountPageCubit extends Cubit<AccountPageState> {
             await AccountRepository().authLogin(data); 
             break;
           default: log("Invalid Form State"); return;
-        };
+        }
       }
     );
 
@@ -65,6 +65,7 @@ class AccountPageCubit extends Cubit<AccountPageState> {
 
 
   void loadDummyLoginData(){
+    // ignore: unused_local_variable
     final _state = state as LoginState;
 
     emit( LoginState(

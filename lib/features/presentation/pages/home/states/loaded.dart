@@ -1,7 +1,7 @@
 part of HomePageLibrary;
 
 class HomeLoadedPage extends StatelessWidget {
-  final List<Product> productList;
+  final List<ProductModel> productList;
   const HomeLoadedPage({required this.productList, super.key});
 
   @override

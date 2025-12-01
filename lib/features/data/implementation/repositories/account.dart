@@ -3,13 +3,12 @@ import 'dart:math';
 
 import 'package:fakestore/core/dio/dio.dart';
 import 'package:fakestore/core/local_storages/secure.cache.dart';
-import 'package:fakestore/features/data/implementation/models/user.models/user.model.dart';
+import 'package:fakestore/features/data/implementation/freezed_models/user/user.model.dart';
 import 'package:fakestore/features/domain/blueprints/account.dart';
 
 class AccountRepository implements AccountRepoBlueprint {
 
   Future<void> authLogin(Map<String, dynamic> data) async {
-    print(data);
     final response = await dio.post(
       "/auth/login",
       data: {
@@ -17,7 +16,6 @@ class AccountRepository implements AccountRepoBlueprint {
         "password": data["password"],
       },
     );
-    print("TOKEN: ${response.data}");
     await SecureCache.write("user", response.data['token']);
   }
 
@@ -35,7 +33,8 @@ class AccountRepository implements AccountRepoBlueprint {
     dev.log("success: ${response.data}");
 
     // Simulate fetching user data for authLogin
-    final User user = await fetchUser(id: 1);
+    // ignore: unused_local_variable
+    final  user = await fetchUser(id: 1);
     await authLogin({
         "username": 'mor_2314',
         "password": '83r5^_',
@@ -49,18 +48,16 @@ class AccountRepository implements AccountRepoBlueprint {
     dev.log("USERS: ${response.data}");
   }
 
-  Future<User> fetchUser({
+  Future<UserModel> fetchUser({
     int id = 1
   }) async{
 
-    print(id);
     final Map<String, dynamic> userData = ( await 
       dio.get(
       "/users/$id",
       )
     ).data;
-    print("USER DATA: ${userData}");
-    return User.fromJson(userData);
+    return UserModel.fromJson(userData);
   }
 
   int _randomizer() {

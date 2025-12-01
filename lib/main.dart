@@ -1,5 +1,3 @@
- import 'dart:developer';
-
 import 'package:fakestore/core/libraries/router.dart';
 import 'package:fakestore/core/dio/dio.dart';
 import 'package:fakestore/core/local_storages/cache.dart';
@@ -18,20 +16,6 @@ Future<void> main() async {
   
   configureDio();
   ThemeSingleton.init();
-
-  // await Future.wait(<Future>[
-
-  //   Future.delayed(
-  //     Duration.zero,
-  //     () {
-  //     } 
-  //   ),
-  // ]).timeout(
-  //   const Duration(minutes: 1),
-  //   onTimeout: () => <void>[
-  //     log("Loading Timeout, please restart.")
-  //   ]
-  // );
 
   runApp(const MyApp());
 }

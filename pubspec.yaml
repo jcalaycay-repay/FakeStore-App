@@ -30,11 +30,14 @@ dependencies:
   cached_network_image: ^3.4.1
   shared_preferences: ^2.5.3
   flutter_secure_storage: ^9.2.4
-  freezed: ^3.2.3
+  freezed_annotation: ^3.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner: 
+  freezed:
+  json_serializable:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -42,6 +45,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  custom_lint: ^0.8.1
+  freezed_lint: ^0.0.12
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

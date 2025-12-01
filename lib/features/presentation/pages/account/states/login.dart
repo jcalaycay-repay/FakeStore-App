@@ -50,6 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextFormField(
                   controller: state.password,
+                  validator: (value) => requiredField(value),
                   obscureText: true,
                   onTapOutside: (event) => passwordNode.unfocus(),
                   decoration: generalInputStyle(
@@ -66,7 +67,9 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Expanded(
                       child: FilledButton(
-                        onPressed: () => accountCubit.submitForm(state.toMap()),
+                        onPressed: () {
+                          if(formKey.currentState!.validate()) accountCubit.submitForm(state.toMap());
+                        },
                         style: filledButtonStyle(),
                         child: Text(
                           "Submit"
@@ -83,7 +86,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             )
-            
           ],
         ),
       ),

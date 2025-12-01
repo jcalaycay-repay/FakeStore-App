@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fakestore/features/data/implementation/models/product.model.dart';
+import 'package:fakestore/features/data/implementation/freezed_models/product/product.model.dart';
 import 'package:flutter/material.dart';
 
 class ListViewProductCard extends StatelessWidget {
-  final Product item;
+  final ProductModel item;
   const ListViewProductCard({required this.item, super.key});
 
   @override
@@ -19,33 +19,6 @@ class ListViewProductCard extends StatelessWidget {
             child: CachedNetworkImage(
               imageUrl: item.imageUrl,
             ),
-
-            // Image.network(
-            //   fit: BoxFit.fill,
-            //   item.imageUrl,
-            //   loadingBuilder: (_, child, _) {
-            //     return Container(
-            //       child: Shimmer(
-            //         color: Colors.grey.shade300,
-            //         child: Container(
-            //           height: 100,
-            //           width: 20,
-            //           child: child,
-            //         )
-            //       ),
-            //     );
-            // },
-            // loadingBuilder: (context, child, loadingProgress) => Shimmer(
-            //   color: Colors.grey.shade400,
-            //   child: Container(
-            //     height: 20,
-            //     width: 20,
-            //     child: Text(
-            //       "${(loadingProgress!.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!) * 100}%"
-            //     ),
-            //   )
-            // ),
-            // ),
           ),
           Expanded(
             flex: 7,

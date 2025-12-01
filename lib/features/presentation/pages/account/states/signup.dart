@@ -3,8 +3,11 @@ part of AccountPageLibrary;
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});
 
+
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+    
     final accountContext = context.read<AccountPageCubit>();
     final signupState = (accountContext.state as SignupState);
     final screen = MediaQuery.sizeOf(context);
@@ -18,6 +21,7 @@ class SignupPage extends StatelessWidget {
       height: screen.height,
       padding: EdgeInsets.all(32),
       child: Form(
+        key: formKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -73,10 +77,13 @@ class SignupPage extends StatelessWidget {
                 Flexible(
                   fit: FlexFit.tight,
                   child: FilledButton(
-                    onPressed: () => 
-                      accountContext.submitForm(
-                        signupState.toMap()
-                      ), 
+                    onPressed: () {
+                      if(formKey.currentState!.validate()){
+                        accountContext.submitForm(
+                          signupState.toMap()
+                        );
+                      }
+                    }, 
                     style: ButtonStyle(
                       padding: WidgetStatePropertyAll(
                         EdgeInsets.symmetric( vertical: 16, horizontal: 16 ),

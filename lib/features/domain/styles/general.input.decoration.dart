@@ -6,9 +6,11 @@ InputDecoration generalInputStyle({
   String? labelText,
 }) => InputDecoration(
   hintText: hintText,
-  label: labelText != null ? Text(
-    labelText,
-  ) : null,
+  label: labelText != null 
+    ? Text(
+      labelText,
+    ) 
+    : null,
   border: OutlineInputBorder(
     borderSide: BorderSide(
       color: Colors.grey.shade400,
@@ -17,5 +19,4 @@ InputDecoration generalInputStyle({
       Radius.circular(12)
     )
   )
-
 );

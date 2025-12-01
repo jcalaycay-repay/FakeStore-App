@@ -1,19 +1,16 @@
 library AccountPageLibrary;
 
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
-import 'package:fakestore/core/local_storages/cache.dart';
 import 'package:fakestore/core/local_storages/secure.cache.dart';
 import 'package:fakestore/core/theme/theme.singleton.dart';
+import 'package:fakestore/features/data/implementation/freezed_models/user/user.model.dart';
 import 'package:fakestore/features/data/implementation/functions/validators.dart';
-import 'package:fakestore/features/data/implementation/models/user.models/user.model.dart';
 import 'package:fakestore/features/data/implementation/repositories/account.dart';
 import 'package:fakestore/features/domain/enums/storage.dart';
 import 'package:fakestore/features/domain/styles/custom.button.style.dart';
 import 'package:fakestore/features/domain/styles/general.input.decoration.dart';
-import 'package:fakestore/features/presentation/pages/account/components/user_contact_detail.dart';
 import 'package:fakestore/features/presentation/pages/account/states/no_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
