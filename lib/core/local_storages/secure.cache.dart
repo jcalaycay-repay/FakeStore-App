@@ -22,9 +22,6 @@ class SecureCache {
     );
   }
 
-  // static FlutterSecureStorage? get storage => _instance;
-
-
   static Future<bool?> write(String key,String value) async {
     final success = await _instance!.write(key: key, value: value)
       .then((_) => true)
