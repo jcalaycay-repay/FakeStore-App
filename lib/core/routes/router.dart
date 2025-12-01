@@ -18,6 +18,22 @@ final router = GoRouter(
             create: (context) => HomePageCubit(),
             child: HomePage(),
           ),
+          routes: [
+            GoRoute(
+              path: '/product',
+              name: "productPage",
+              builder: (context, state) {
+                final {
+                  "productId": int id
+                } = state.extra as Map<String, dynamic>;
+
+                return BlocProvider<ProductPageCubit>(
+                  create: (context) => ProductPageCubit(),
+                  child: ProductPageLogic(productId: id),
+                );
+              }
+            ),
+          ]
         ),
         // GoRoute(
         //   path: '/cart',
