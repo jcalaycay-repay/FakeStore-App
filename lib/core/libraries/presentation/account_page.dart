@@ -5,7 +5,7 @@ import 'dart:developer';
 import 'package:equatable/equatable.dart';
 import 'package:fakestore/core/local_storages/secure.cache.dart';
 import 'package:fakestore/core/theme/theme.singleton.dart';
-import 'package:fakestore/features/data/implementation/freezed_models/user/user.model.dart';
+import 'package:fakestore/features/data/implementation/models/user/user.model.dart';
 import 'package:fakestore/features/data/implementation/functions/validators.dart';
 import 'package:fakestore/features/data/implementation/repositories/account.dart';
 import 'package:fakestore/features/domain/enums/storage.dart';

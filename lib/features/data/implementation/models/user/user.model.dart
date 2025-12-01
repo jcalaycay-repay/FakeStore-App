@@ -1,4 +1,4 @@
-import 'package:fakestore/features/data/implementation/freezed_models/name/name.model.dart';
+import 'package:fakestore/features/data/implementation/models/name/name.model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.model.freezed.dart';
