@@ -2,9 +2,9 @@ library HomePageLibrary;
 
 
 import 'package:equatable/equatable.dart';
-import 'package:fakestore/features/data/implementation/models/product.dart';
+import 'package:fakestore/features/data/implementation/models/product.model.dart';
 import 'package:fakestore/features/data/implementation/repositories/product.dart';
-import 'package:fakestore/features/presentation/components/product_cards/list_view.dart';
+import 'package:fakestore/features/presentation/universal_components/product_cards/list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

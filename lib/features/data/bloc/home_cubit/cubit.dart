@@ -6,7 +6,7 @@ class HomePageCubit extends Cubit<HomePageState> {
   void init() async {
     final productList = await ProductRepository().fetchAllProducts();
 
-    emit(HomePageLoadedState(
+    emit( HomePageLoadedState(
       productList: productList
     ));
   }

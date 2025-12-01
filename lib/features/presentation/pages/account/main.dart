@@ -11,12 +11,21 @@ class _AccountPageState extends State<AccountPage> {
 
   @override
   void initState() {
-    context.read<AccountPageCubit>();
+    context.read<AccountPageCubit>().init();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return BlocBuilder<AccountPageCubit, AccountPageState>(
+      builder: (context, state) => switch(state) {
+        AccountInitialState() || AccountLoadingState() => AccountLoadingPage(),
+        AccountLoadedState(: var user) => AccountLoadedPage(user: user),
+        AccountNoUserState() => NoUserPage(),
+        SignupState() => SignupPage(),
+        LoginState() => LoginPage(),
+        _ => throw UnimplementedError("Invalid Account Page State")
+      }
+    );
   }
 }

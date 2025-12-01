@@ -14,6 +14,7 @@ class MainShell extends StatefulWidget {
 }
 
 class _MainShellState extends State<MainShell> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,23 +26,12 @@ class _MainShellState extends State<MainShell> {
         scrolledUnderElevation: 0,
       ),
       body: widget.child,
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home"
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.cart),
-            label: "Cart"
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Account"
-          ),
-        ],
+      bottomNavigationBar: ShellBottomNavbar(
+        routerState: widget.routerState,
+        currentIndex: RoutePage.values.indexWhere(
+          (page) => page.name == widget.routerState.name
+        ) + 1,
       ),
-
     );
   }
 }

@@ -1,6 +1,6 @@
-import 'package:fakestore/features/data/implementation/models/product.dart';
-import 'package:fakestore/features/domain/dio/dio.dart';
-import 'package:fakestore/features/domain/repositories/product.dart';
+import 'package:fakestore/features/data/implementation/models/product.model.dart';
+import 'package:fakestore/core/dio/dio.dart';
+import 'package:fakestore/features/domain/blueprints/product.dart';
 
 class ProductRepository implements ProductRepoBlueprint {
     @override

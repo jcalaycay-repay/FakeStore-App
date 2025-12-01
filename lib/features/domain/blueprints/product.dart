@@ -1,4 +1,4 @@
-import 'package:fakestore/features/data/implementation/models/product.dart';
+import 'package:fakestore/features/data/implementation/models/product.model.dart';
 
 abstract class ProductRepoBlueprint {
   Future<List<Product>> fetchAllProducts();
