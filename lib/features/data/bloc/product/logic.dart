@@ -24,7 +24,7 @@ class _ProductPageLogicState extends State<ProductPageLogic> {
       builder: (context, state) => switch(state) {
         ProductPageLoadingState() => LoadingProductPage(),
         ProductPageLoadedState(: var productData) => LoadedProductPage(productData: productData,),
-        _ => throw UnimplementedError("Invalid Prodcut Page State")
+        _ => throw UnimplementedError("Invalid Product Page State")
       }
     );
   }
