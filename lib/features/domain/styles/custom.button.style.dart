@@ -1,4 +1,3 @@
-import 'package:fakestore/core/theme/theme.singleton.dart';
 import 'package:flutter/material.dart';
 
 ButtonStyle filledButtonStyle() => ButtonStyle(

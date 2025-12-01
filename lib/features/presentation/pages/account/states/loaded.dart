@@ -1,7 +1,7 @@
 part of AccountPageLibrary;
 
 class AccountLoadedPage extends StatelessWidget {
-  final User user;
+  final UserModel user;
   const AccountLoadedPage({
     required this.user,
     super.key
@@ -58,7 +58,7 @@ class AccountLoadedPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      user.name.full,
+                      user.name.fullname,
                       style: theme.textTheme.displaySmall!.copyWith(
                         fontWeight: FontWeight.w600,
                         height: 1

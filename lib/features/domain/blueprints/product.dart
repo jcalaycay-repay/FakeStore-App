@@ -1,7 +1,7 @@
-import 'package:fakestore/features/data/implementation/models/product.model.dart';
+import 'package:fakestore/features/data/implementation/freezed_models/product/product.model.dart';
 
 abstract class ProductRepoBlueprint {
-  Future<List<Product>> fetchAllProducts();
+  Future<List<ProductModel>> fetchAllProducts();
 
-  Future<Product> fetchProductById(int id);
+  Future<ProductModel> fetchProductById(int id);
 }

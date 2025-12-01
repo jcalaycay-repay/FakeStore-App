@@ -15,7 +15,7 @@ class AccountLoadingState extends AccountPageState {}
 class AccountNoUserState extends AccountPageState {}
 
 class AccountLoadedState extends AccountPageState {
-  final User user;
+  final UserModel user;
   const AccountLoadedState({
     required this.user
   });
