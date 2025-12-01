@@ -13,5 +13,5 @@ abstract class AccountRepoBlueprint {
     int id
   });
 
-  int randomizer();
+  int _randomizer();
 }

@@ -1,4 +1,4 @@
-import 'package:fakestore/features/domain/models/product.dart';
+import 'package:fakestore/features/domain/models/product.model.dart';
 
 class Product extends ProductModel {
   const Product({

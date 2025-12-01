@@ -16,7 +16,7 @@ class SignupPage extends StatelessWidget {
 
     return Container(
       height: screen.height,
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.all(32),
       child: Form(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -68,18 +68,26 @@ class SignupPage extends StatelessWidget {
             ),
             
 
-            GestureDetector(
-              onTap: () => accountContext.submitForm(signupState.toMap()),
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1,
-                  )
+            Row(
+              children: [
+                Flexible(
+                  fit: FlexFit.tight,
+                  child: FilledButton(
+                    onPressed: () => 
+                      accountContext.submitForm(
+                        signupState.toMap()
+                      ), 
+                    style: ButtonStyle(
+                      padding: WidgetStatePropertyAll(
+                        EdgeInsets.symmetric( vertical: 16, horizontal: 16 ),
+                      ),
+                    ),
+                    child: Text(
+                      "Submit"
+                    )
+                  ),
                 ),
-                child: Text(
-                  "Submit"
-                ),
-              ),
+              ],
             )
           ]
         ),

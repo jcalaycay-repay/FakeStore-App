@@ -25,36 +25,65 @@ class _LoginPageState extends State<LoginPage> {
     final accountCubit = context.read<AccountPageCubit>();
     final state = accountCubit.state as LoginState;
 
-    return Container(
-      height: MediaQuery.sizeOf(context).height,
-      padding: EdgeInsets.all(16),
-      child: Form(
-        key: formKey,
+    return Form(
+      key: formKey,
+      child: Container(
+        height: MediaQuery.sizeOf(context).height,
+        padding: EdgeInsets.symmetric(
+          vertical: 16,
+          horizontal: 32
+        ),
         child: Column(
+          spacing: 32,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextFormField(
-              controller: state.username,
-              validator: (value) => requiredField(value!),
-              onTapOutside: (event) => usernameNode.unfocus(),
-              decoration: generalInputStyle(),
+            Column(
+              spacing: 12,
+              children: [
+                TextFormField(
+                  controller: state.username,
+                  validator: (value) => requiredField(value!),
+                  onTapOutside: (event) => usernameNode.unfocus(),
+                  decoration: generalInputStyle(
+                    labelText: "Username"
+                  ),
+                ),
+                TextFormField(
+                  controller: state.password,
+                  obscureText: true,
+                  onTapOutside: (event) => passwordNode.unfocus(),
+                  decoration: generalInputStyle(
+                    labelText: "Password"
+                  ),
+                ),
+              ],
             ),
-            TextFormField(
-              controller: state.password,
-              obscureText: true,
-              onTapOutside: (event) => passwordNode.unfocus(),
-            ),
-            GestureDetector(
-              onTap: () => accountCubit.submitForm(state.toMap()),
-              child: Text(
-                "Submit"
-              ),
-            ),
-            TextButton(
-              onPressed: () => accountCubit.loadDummyLoginData(),
-              child: Text(
-                'Load dummy data'
-              ),
+
+
+            Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: FilledButton(
+                        onPressed: () => accountCubit.submitForm(state.toMap()),
+                        style: filledButtonStyle(),
+                        child: Text(
+                          "Submit"
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                TextButton(
+                  onPressed: () => accountCubit.loadDummyLoginData(),
+                  child: Text(
+                    'Load dummy data'
+                  ),
+                ),
+              ],
             )
+            
           ],
         ),
       ),

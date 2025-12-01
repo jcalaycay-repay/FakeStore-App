@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:fakestore/features/data/implementation/models/user.models/geolocation.model.dart';
-import 'package:fakestore/features/domain/models/address.dart';
+import 'package:fakestore/features/domain/models/address.model.dart';
 
 class Address extends AddressModel  {
   Address({

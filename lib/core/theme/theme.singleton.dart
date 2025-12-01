@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 class ThemeSingleton {
   ThemeSingleton._internal();
 
-  late ThemeSingleton _instance = ThemeSingleton._internal();
+  static final ThemeSingleton _instance = ThemeSingleton._internal();
 
-  Future<void> init() async {
+  static ThemeData? defaultTheme;
+  static ThemeData? darkTheme;
 
-      _instance = ;
+  static void init()  {
+      defaultTheme = ThemeData.light();
+      darkTheme = ThemeData.dark();
   }
+
+
 }

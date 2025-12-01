@@ -1,37 +1,50 @@
- import 'package:fakestore/core/libraries/router.dart';
+ import 'dart:developer';
+
+import 'package:fakestore/core/libraries/router.dart';
 import 'package:fakestore/core/dio/dio.dart';
 import 'package:fakestore/core/local_storages/cache.dart';
 import 'package:fakestore/core/local_storages/secure.cache.dart';
+import 'package:fakestore/core/theme/theme.singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Future.wait([
-    dotenv.load(),
-    
-    configureDio(),
+  await dotenv.load();
+  await NormalCache.init();
+  await SecureCache.init();
 
-    NormalCache.init(),
-    SecureCache.init(),
+  
+  configureDio();
+  ThemeSingleton.init();
 
-  ]).timeout()
+  // await Future.wait(<Future>[
 
+  //   Future.delayed(
+  //     Duration.zero,
+  //     () {
+  //     } 
+  //   ),
+  // ]).timeout(
+  //   const Duration(minutes: 1),
+  //   onTimeout: () => <void>[
+  //     log("Loading Timeout, please restart.")
+  //   ]
+  // );
 
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Fake Store',
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      theme: ThemeSingleton.defaultTheme,
+      darkTheme: ThemeSingleton.darkTheme,
       routerConfig: router,
     );
   }

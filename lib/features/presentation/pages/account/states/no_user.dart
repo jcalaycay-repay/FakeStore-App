@@ -1,4 +1,6 @@
 import 'package:fakestore/core/libraries/presentation/account_page.dart';
+import 'package:fakestore/core/theme/theme.singleton.dart';
+import 'package:fakestore/features/domain/styles/custom.button.style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,21 +11,54 @@ class NoUserPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final accountContext = context.read<AccountPageCubit>();
 
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: () => accountContext.navigateToLogin(),
-          child: Text(
-            "Login"
+    return Container(
+      padding: EdgeInsets.all(32),
+      child: Column(
+        spacing: 16,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextButton(
+            onPressed: () => accountContext.navigateToLogin(),
+            child: Text(
+              "Login",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w700
+              ),
+            ),
           ),
-        ),
-        GestureDetector(
-          onTap: () => accountContext.navigateToSignup(),
-          child: Text(
-            "Sign Up"
+          Row(
+            spacing: 8,
+            children: [
+              Expanded(child: Divider()),
+              Text(
+                "OR",
+                style: TextStyle(
+                  color: ThemeSingleton.defaultTheme!.disabledColor
+                ),
+              ),
+              Expanded(child: Divider())
+            ],
           ),
-        ),
-      ],
+          Row(
+            children: [
+              Expanded(
+                child: FilledButton(
+                  onPressed: () => accountContext.navigateToSignup(),
+                  style: filledButtonStyle(),
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

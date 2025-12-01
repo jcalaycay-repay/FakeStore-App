@@ -1,4 +1,4 @@
-import 'package:fakestore/features/domain/models/geolocation.dart';
+import 'package:fakestore/features/domain/models/geolocation.model.dart';
 
 class Geolocation extends GeolocationModel {
   const Geolocation({

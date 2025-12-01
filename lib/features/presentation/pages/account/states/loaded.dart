@@ -42,13 +42,13 @@ class AccountLoadedPage extends StatelessWidget {
                     ),
                     border: Border.all(
                       width: 2,
-                      color: theme.colorScheme.primary,
+                      color: ThemeSingleton.defaultTheme!.colorScheme.primary,
                     )
                   ),
                   child: Icon(
                     Icons.account_circle,
                     size: 160,
-                    color: theme.colorScheme.primary,
+                    color: ThemeSingleton.defaultTheme!.colorScheme.primary,
                   ),
                 ),
         
