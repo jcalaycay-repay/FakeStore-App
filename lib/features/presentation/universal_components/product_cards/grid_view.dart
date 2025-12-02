@@ -78,11 +78,10 @@ class GridViewProductCard extends StatelessWidget {
                           initialRating: item.rating.rate,
                           itemSize: 16,
                           ignoreGestures: true,
-                          glowColor: ThemeSingleton.defaultTheme!.highlightColor,
                           itemBuilder: (context, _){
                             return Icon(
                               Icons.star,
-                              color: ThemeSingleton.defaultTheme!.colorScheme.primary,
+                              color: Colors.orangeAccent,
                             );
                           }, 
                           onRatingUpdate: (_) {}

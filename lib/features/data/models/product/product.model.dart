@@ -12,6 +12,7 @@ abstract class ProductModel with _$ProductModel {
   const factory ProductModel({
     required int id,
     @JsonKey(name: 'title') required String name,
+    required String category,
     required double price,
     required String description,
     @JsonKey(name: 'image') required String imageUrl,
@@ -23,6 +24,7 @@ abstract class ProductModel with _$ProductModel {
   CartItem toCartData({ required int quantity}) => CartItem(
     id: id, 
     name: name, 
+    category: category,
     imageUrl: imageUrl,
     price: price, 
     quantity: quantity

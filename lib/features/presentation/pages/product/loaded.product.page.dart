@@ -100,12 +100,12 @@ class LoadedProductPage extends StatelessWidget {
             ),
 
             // ! For Testing
-            TextButton(
-              onPressed: () => NormalCache.remove(Storage.cart), 
-              child: Text(
-                "test"
-              )
-            ),
+            // TextButton(
+            //   onPressed: () => NormalCache.remove(Storage.cart), 
+            //   child: Text(
+            //     "test"
+            //   )
+            // ),
             FilledButton(
               onPressed: () => context.read<ProductPageCubit>().addToCart(), 
               

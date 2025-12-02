@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CartItem {
 
- int get id; String get name; String get imageUrl; double get price; int get quantity;
+ int get id; String get name; String get category; String get imageUrl; double get price; bool get checked; int get quantity;
 /// Create a copy of CartItem
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $CartItemCopyWith<CartItem> get copyWith => _$CartItemCopyWithImpl<CartItem>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartItem&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.price, price) || other.price == price)&&(identical(other.quantity, quantity) || other.quantity == quantity));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartItem&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.category, category) || other.category == category)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.price, price) || other.price == price)&&(identical(other.checked, checked) || other.checked == checked)&&(identical(other.quantity, quantity) || other.quantity == quantity));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,imageUrl,price,quantity);
+int get hashCode => Object.hash(runtimeType,id,name,category,imageUrl,price,checked,quantity);
 
 @override
 String toString() {
-  return 'CartItem(id: $id, name: $name, imageUrl: $imageUrl, price: $price, quantity: $quantity)';
+  return 'CartItem(id: $id, name: $name, category: $category, imageUrl: $imageUrl, price: $price, checked: $checked, quantity: $quantity)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $CartItemCopyWith<$Res>  {
   factory $CartItemCopyWith(CartItem value, $Res Function(CartItem) _then) = _$CartItemCopyWithImpl;
 @useResult
 $Res call({
- int id, String name, String imageUrl, double price, int quantity
+ int id, String name, String category, String imageUrl, double price, bool checked, int quantity
 });
 
 
@@ -65,13 +65,15 @@ class _$CartItemCopyWithImpl<$Res>
 
 /// Create a copy of CartItem
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? imageUrl = null,Object? price = null,Object? quantity = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? category = null,Object? imageUrl = null,Object? price = null,Object? checked = null,Object? quantity = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as String,imageUrl: null == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
-as double,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as double,checked: null == checked ? _self.checked : checked // ignore: cast_nullable_to_non_nullable
+as bool,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }
@@ -157,10 +159,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String imageUrl,  double price,  int quantity)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String category,  String imageUrl,  double price,  bool checked,  int quantity)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CartItem() when $default != null:
-return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.quantity);case _:
+return $default(_that.id,_that.name,_that.category,_that.imageUrl,_that.price,_that.checked,_that.quantity);case _:
   return orElse();
 
 }
@@ -178,10 +180,10 @@ return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.quantity);c
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String imageUrl,  double price,  int quantity)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String category,  String imageUrl,  double price,  bool checked,  int quantity)  $default,) {final _that = this;
 switch (_that) {
 case _CartItem():
-return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.quantity);case _:
+return $default(_that.id,_that.name,_that.category,_that.imageUrl,_that.price,_that.checked,_that.quantity);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -198,10 +200,10 @@ return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.quantity);c
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String imageUrl,  double price,  int quantity)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String category,  String imageUrl,  double price,  bool checked,  int quantity)?  $default,) {final _that = this;
 switch (_that) {
 case _CartItem() when $default != null:
-return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.quantity);case _:
+return $default(_that.id,_that.name,_that.category,_that.imageUrl,_that.price,_that.checked,_that.quantity);case _:
   return null;
 
 }
@@ -213,13 +215,15 @@ return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.quantity);c
 @JsonSerializable()
 
 class _CartItem extends CartItem {
-  const _CartItem({required this.id, required this.name, required this.imageUrl, required this.price, this.quantity = 1}): super._();
+  const _CartItem({required this.id, required this.name, required this.category, required this.imageUrl, required this.price, this.checked = false, this.quantity = 1}): super._();
   factory _CartItem.fromJson(Map<String, dynamic> json) => _$CartItemFromJson(json);
 
 @override final  int id;
 @override final  String name;
+@override final  String category;
 @override final  String imageUrl;
 @override final  double price;
+@override@JsonKey() final  bool checked;
 @override@JsonKey() final  int quantity;
 
 /// Create a copy of CartItem
@@ -235,16 +239,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CartItem&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.price, price) || other.price == price)&&(identical(other.quantity, quantity) || other.quantity == quantity));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CartItem&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.category, category) || other.category == category)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.price, price) || other.price == price)&&(identical(other.checked, checked) || other.checked == checked)&&(identical(other.quantity, quantity) || other.quantity == quantity));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,imageUrl,price,quantity);
+int get hashCode => Object.hash(runtimeType,id,name,category,imageUrl,price,checked,quantity);
 
 @override
 String toString() {
-  return 'CartItem(id: $id, name: $name, imageUrl: $imageUrl, price: $price, quantity: $quantity)';
+  return 'CartItem(id: $id, name: $name, category: $category, imageUrl: $imageUrl, price: $price, checked: $checked, quantity: $quantity)';
 }
 
 
@@ -255,7 +259,7 @@ abstract mixin class _$CartItemCopyWith<$Res> implements $CartItemCopyWith<$Res>
   factory _$CartItemCopyWith(_CartItem value, $Res Function(_CartItem) _then) = __$CartItemCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name, String imageUrl, double price, int quantity
+ int id, String name, String category, String imageUrl, double price, bool checked, int quantity
 });
 
 
@@ -272,13 +276,15 @@ class __$CartItemCopyWithImpl<$Res>
 
 /// Create a copy of CartItem
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? imageUrl = null,Object? price = null,Object? quantity = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? category = null,Object? imageUrl = null,Object? price = null,Object? checked = null,Object? quantity = null,}) {
   return _then(_CartItem(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as String,imageUrl: null == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
-as double,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as double,checked: null == checked ? _self.checked : checked // ignore: cast_nullable_to_non_nullable
+as bool,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }

@@ -17,16 +17,17 @@ class _CartPageLogicState extends State<CartPageLogic> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CartCubit, CartState>(
-      listener: (context, state) {
-        log(state.runtimeType.toString());
-      },
+    return BlocBuilder<CartCubit, CartState>(
+      // listener: (context, state) {
+      //   log(state.runtimeType.toString());
+      // },
       builder: (context, state) => switch(state) {
         CartInitState() || CartLoadingState() => CartPageLoadingPage(),
-        CartLoadedState(: var cart) => CartPageLoadedPage(cart: cart),
+        CartLoadedState(: var cart) => CartPageLoadedPage(cart: cart,),
         CartEmptyState() => CartEmptyPage(),
         _ => throw UnimplementedError("Invalid Cart Page State")
-      }
+      },
+      buildWhen: (previous, current) => current is CartLoadedState,
     );
   }
 }
