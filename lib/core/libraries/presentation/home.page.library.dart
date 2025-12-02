@@ -5,9 +5,11 @@ import 'package:equatable/equatable.dart';
 import 'package:fakestore/core/theme/theme.singleton.dart';
 import 'package:fakestore/features/data/implementation/models/product/product.model.dart';
 import 'package:fakestore/features/data/implementation/repositories/product.dart';
+import 'package:fakestore/features/presentation/universal_components/product_cards/grid_view.dart';
 import 'package:fakestore/features/presentation/universal_components/product_cards/list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 // BLoC
 part '../../../features/data/bloc/home_cubit/cubit.dart';

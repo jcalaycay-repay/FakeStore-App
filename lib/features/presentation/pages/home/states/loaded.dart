@@ -9,20 +9,33 @@ class HomeLoadedPage extends StatelessWidget {
     final homeCubit = context.read<HomePageCubit>();
     final homeState = (homeCubit.state as HomePageLoadedState);
 
-    // return SingleChildScrollView(
-    //   child: Column(
-    //     children: productList.map((item) => ListViewProductCard(item: item)).toList(),
-    //   ),
-    // );
-
     return Scaffold(
-      body: ListView.separated(
-        itemCount: productList.length,
-        separatorBuilder: (_, __) => Divider(),
-        itemBuilder: (_, index) => ListViewProductCard(item: productList[index]),
-      ),
+      backgroundColor: homeState.listView 
+        ? ThemeSingleton.defaultTheme!.colorScheme.surface
+        : ThemeSingleton.defaultTheme!.colorScheme.surfaceContainer,
+      body: homeState.listView 
+        ? ListView.separated(
+          padding: EdgeInsets.all(8),
+          itemCount: productList.length,
+          separatorBuilder: (_, __) => Divider(),
+          itemBuilder: (_, index) => ListViewProductCard(item: productList[index]),
+        )
+        
+        : MasonryGridView.count(
+            padding: EdgeInsets.symmetric(
+              horizontal: 8,
+              vertical: 12
+            ),
+            crossAxisCount: 2,
+            mainAxisSpacing: 8,
+            crossAxisSpacing: 8,
+            itemCount: productList.length,
+            itemBuilder: (context, index) {
+              return GridViewProductCard(item: productList[index]);
+            },
+          ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.read<HomePageCubit>().toggleView(),
+        onPressed: () => homeCubit.toggleView(),
         backgroundColor: ThemeSingleton.defaultTheme!.colorScheme.primary,
         child: Icon(
           homeState.listView ? Icons.list : Icons.window,
