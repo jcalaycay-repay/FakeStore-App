@@ -10,5 +10,6 @@ abstract class AccountRepoBlueprint {
     int id
   });
 
+  // ignore: unused_element
   int _randomizer();
 }

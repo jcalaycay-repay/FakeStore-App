@@ -12,6 +12,9 @@ import 'presentation/product.page.library.dart' show
   ProductPageCubit,
   ProductPageLogic;
 
+import 'package:fakestore/core/libraries/presentation/cart.page.library.dart' show
+  CartPageLogic,
+  CartCubit;
 
 part '../routes/router.dart';
 
