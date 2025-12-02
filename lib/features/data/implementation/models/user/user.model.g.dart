@@ -11,7 +11,7 @@ _UserModel _$UserModelFromJson(Map<String, dynamic> json) => _UserModel(
   username: json['username'] as String,
   name: NameModel.fromJson(json['name'] as Map<String, dynamic>),
   phoneNunmber: json['phone'],
-  address: json['address'] as String,
+  address: AddressModel.fromJson(json['address'] as Map<String, dynamic>),
   email: json['email'] as String,
 );
 

@@ -8,8 +8,8 @@ part of 'geolocation.model.dart';
 
 _GeolocationModel _$GeolocationModelFromJson(Map<String, dynamic> json) =>
     _GeolocationModel(
-      latitude: (json['lat'] as num).toDouble(),
-      longitude: (json['long'] as num).toDouble(),
+      latitude: double.parse(json['lat']),
+      longitude: double.parse(json['long']),
     );
 
 Map<String, dynamic> _$GeolocationModelToJson(_GeolocationModel instance) =>

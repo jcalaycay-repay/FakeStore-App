@@ -76,7 +76,7 @@ class AccountLoadedPage extends StatelessWidget {
                 ),
         
                 GestureDetector(
-                  onTap: () => print("pressed"), 
+                  onTap: () => log("pressed"), 
                   child: Container(
                     padding: EdgeInsets.symmetric(
                       horizontal: 32,
