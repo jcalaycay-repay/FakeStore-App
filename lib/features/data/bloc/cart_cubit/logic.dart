@@ -8,12 +8,23 @@ class CartPageLogic extends StatefulWidget {
 }
 
 class _CartPageLogicState extends State<CartPageLogic> {
+
+  @override
+  void initState() {
+    context.read<CartCubit>().init();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CartCubit, CartState>(
+    return BlocConsumer<CartCubit, CartState>(
+      listener: (context, state) {
+        log(state.runtimeType.toString());
+      },
       builder: (context, state) => switch(state) {
         CartInitState() || CartLoadingState() => CartPageLoadingPage(),
         CartLoadedState(: var cart) => CartPageLoadedPage(cart: cart),
+        CartEmptyState() => CartEmptyPage(),
         _ => throw UnimplementedError("Invalid Cart Page State")
       }
     );

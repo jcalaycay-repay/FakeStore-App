@@ -37,8 +37,8 @@ final router = GoRouter(
         ),
         GoRoute(
           path: '/cart',
-          name: "Cart",
-          builder: (context, state) => BlocProvider(
+          name: "cart",
+          builder: (context, state) => BlocProvider<CartCubit>(
             create: (context) => CartCubit(),
             child: CartPageLogic()
           )

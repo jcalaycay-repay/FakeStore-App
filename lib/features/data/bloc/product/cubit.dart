@@ -3,36 +3,23 @@ part of ProductPageLibrary;
 class ProductPageCubit extends Cubit<ProductPageState> {
   ProductPageCubit() : super(ProductPageLoadingState());
 
-
   void init(int id) async  {
     final ProductModel item = await ProductRepository().fetchProductById(id);
 
-    print(_getCart.contains(jsonEncode(item.toJson())));
-
     emit( ProductPageLoadedState(
       productData: item, 
-      inCart: _getCart.contains(jsonEncode(item.toJson()))
+      inCart: CartRepository().cartContains(id),
     ));
   }
 
-  void addToCart() {
+  void addToCart({int quantity = 1}) async {
     if(state is ProductPageLoadedState) {
       final _state = state as ProductPageLoadedState;
-      final cart = _getCart;
-      final deserializedItem = _state.productData.toJson();
-
-      if(cart.contains(jsonEncode(deserializedItem))){ print("inCart"); return; }
-
-      NormalCache.setStringList( Storage.cart, [
-        ...cart, 
-        jsonEncode(deserializedItem)
-      ]);
+      final success = await CartRepository().add(_state.productData, quantity: quantity);
 
       emit( _state.copyWith(
-        inCart: true,
+        inCart: success,
       ));
     }
   }
-
-  List<String> get _getCart => NormalCache.getStringList(Storage.cart) ?? [];
 }

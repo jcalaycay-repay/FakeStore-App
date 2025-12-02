@@ -1,11 +1,16 @@
 library CartPageLibrary;
 
 import 'dart:convert';
+import 'dart:developer';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fakestore/core/local_storages/cache.dart';
-import 'package:fakestore/features/data/implementation/models/product/product.model.dart';
+import 'package:fakestore/features/data/models/cart_item/cart.item.model.dart';
+import 'package:fakestore/features/data/models/product/product.model.dart';
+import 'package:fakestore/features/data/repositories/cart.dart';
 import 'package:fakestore/features/domain/enums/storage.dart';
+import 'package:fakestore/features/presentation/pages/cart/empty.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

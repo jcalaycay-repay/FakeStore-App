@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$GeolocationModel {
 
-@JsonKey(name: "lat") double get latitude;@JsonKey(name: 'long') double get longitude;
+ double get latitude; double get longitude;
 /// Create a copy of GeolocationModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $GeolocationModelCopyWith<$Res>  {
   factory $GeolocationModelCopyWith(GeolocationModel value, $Res Function(GeolocationModel) _then) = _$GeolocationModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: "lat") double latitude,@JsonKey(name: 'long') double longitude
+ double latitude, double longitude
 });
 
 
@@ -154,7 +154,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: "lat")  double latitude, @JsonKey(name: 'long')  double longitude)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double latitude,  double longitude)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _GeolocationModel() when $default != null:
 return $default(_that.latitude,_that.longitude);case _:
@@ -175,7 +175,7 @@ return $default(_that.latitude,_that.longitude);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: "lat")  double latitude, @JsonKey(name: 'long')  double longitude)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double latitude,  double longitude)  $default,) {final _that = this;
 switch (_that) {
 case _GeolocationModel():
 return $default(_that.latitude,_that.longitude);case _:
@@ -195,7 +195,7 @@ return $default(_that.latitude,_that.longitude);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: "lat")  double latitude, @JsonKey(name: 'long')  double longitude)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double latitude,  double longitude)?  $default,) {final _that = this;
 switch (_that) {
 case _GeolocationModel() when $default != null:
 return $default(_that.latitude,_that.longitude);case _:
@@ -210,11 +210,11 @@ return $default(_that.latitude,_that.longitude);case _:
 @JsonSerializable()
 
 class _GeolocationModel extends GeolocationModel {
-  const _GeolocationModel({@JsonKey(name: "lat") required this.latitude, @JsonKey(name: 'long') required this.longitude}): super._();
+  const _GeolocationModel({required this.latitude, required this.longitude}): super._();
   factory _GeolocationModel.fromJson(Map<String, dynamic> json) => _$GeolocationModelFromJson(json);
 
-@override@JsonKey(name: "lat") final  double latitude;
-@override@JsonKey(name: 'long') final  double longitude;
+@override final  double latitude;
+@override final  double longitude;
 
 /// Create a copy of GeolocationModel
 /// with the given fields replaced by the non-null parameter values.
@@ -249,7 +249,7 @@ abstract mixin class _$GeolocationModelCopyWith<$Res> implements $GeolocationMod
   factory _$GeolocationModelCopyWith(_GeolocationModel value, $Res Function(_GeolocationModel) _then) = __$GeolocationModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: "lat") double latitude,@JsonKey(name: 'long') double longitude
+ double latitude, double longitude
 });
 
 

@@ -4,18 +4,18 @@ class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitState());
 
   void init() async {
-    final storedCart = await NormalCache.getString(Storage.cart);
+    final storedCart = CartRepository().getCart;
 
-    if(storedCart == null) {
-      emit( CartLoadedState(
-        cart: List<ProductModel>.empty()
-      ));
+    log(storedCart.toString());
+
+    if(storedCart.isEmpty) {
+      emit(CartEmptyState());
     } else {
-      final List<ProductModel> cart = (storedCart as List<String>).map(
-        (item) => ProductModel.fromJson(jsonDecode(item))
+      final List<CartItem> cart = storedCart.map(
+        (item) => CartItem.fromJson(jsonDecode(item))
       ).toList();
 
-      emit( CartLoadedState(cart: cart));
+      emit(CartLoadedState(cart: cart));
     }
   }
 }

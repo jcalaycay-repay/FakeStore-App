@@ -1,4 +1,4 @@
-import 'package:fakestore/features/data/implementation/models/product/product.model.dart';
+import 'package:fakestore/features/data/models/product/product.model.dart';
 import 'package:fakestore/core/dio/dio.dart';
 import 'package:fakestore/features/domain/blueprints/product.dart';
 

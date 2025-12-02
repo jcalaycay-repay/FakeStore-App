@@ -38,6 +38,10 @@ class NormalCache {
   }
 
 
+  static void remove(Storage key) {
+    _instance!.remove(key.name);
+  }
+
 
 
 }

@@ -98,6 +98,14 @@ class LoadedProductPage extends StatelessWidget {
                 color: Theme.of(context).colorScheme.error,
               )
             ),
+
+            // ! For Testing
+            TextButton(
+              onPressed: () => NormalCache.remove(Storage.cart), 
+              child: Text(
+                "test"
+              )
+            ),
             FilledButton(
               onPressed: () => context.read<ProductPageCubit>().addToCart(), 
               

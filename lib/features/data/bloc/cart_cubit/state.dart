@@ -11,8 +11,9 @@ class CartState extends Equatable {
 
 class CartInitState extends CartState {}
 class CartLoadingState extends CartState {}
+class CartEmptyState extends CartState {}
 class CartLoadedState extends CartState {
-  final List<ProductModel>? cart;
+  final List<CartItem>? cart;
 
   const CartLoadedState({
     this.cart,
