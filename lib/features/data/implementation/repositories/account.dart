@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:fakestore/core/dio/dio.dart';
 import 'package:fakestore/core/local_storages/secure.cache.dart';
-import 'package:fakestore/features/data/implementation/freezed_models/user/user.model.dart';
+import 'package:fakestore/features/data/implementation/models/user/user.model.dart';
 import 'package:fakestore/features/domain/blueprints/account.dart';
 
 class AccountRepository implements AccountRepoBlueprint {

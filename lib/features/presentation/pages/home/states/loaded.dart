@@ -6,16 +6,42 @@ class HomeLoadedPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return SingleChildScrollView(
-    //   child: Column(
-    //     children: productList.map((item) => ListViewProductCard(item: item)).toList(),
-    //   ),
-    // );
+    final homeCubit = context.read<HomePageCubit>();
+    final homeState = (homeCubit.state as HomePageLoadedState);
 
-    return ListView.separated(
-      itemCount: productList.length,
-      separatorBuilder: (_, __) => Divider(),
-      itemBuilder: (_, index) => ListViewProductCard(item: productList[index]),
+    return Scaffold(
+      backgroundColor: homeState.listView 
+        ? ThemeSingleton.defaultTheme!.colorScheme.surface
+        : ThemeSingleton.defaultTheme!.colorScheme.surfaceContainer,
+      body: homeState.listView 
+        ? ListView.separated(
+          padding: EdgeInsets.all(8),
+          itemCount: productList.length,
+          separatorBuilder: (_, __) => Divider(),
+          itemBuilder: (_, index) => ListViewProductCard(item: productList[index]),
+        )
+        
+        : MasonryGridView.count(
+            padding: EdgeInsets.symmetric(
+              horizontal: 8,
+              vertical: 12
+            ),
+            crossAxisCount: 2,
+            mainAxisSpacing: 8,
+            crossAxisSpacing: 8,
+            itemCount: productList.length,
+            itemBuilder: (context, index) {
+              return GridViewProductCard(item: productList[index]);
+            },
+          ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => homeCubit.toggleView(),
+        backgroundColor: ThemeSingleton.defaultTheme!.colorScheme.primary,
+        child: Icon(
+          homeState.listView ? Icons.list : Icons.window,
+          color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+        ),
+      ),
     );
   }
 }

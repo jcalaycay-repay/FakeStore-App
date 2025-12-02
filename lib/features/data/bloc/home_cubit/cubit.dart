@@ -10,4 +10,14 @@ class HomePageCubit extends Cubit<HomePageState> {
       productList: productList
     ));
   }
+
+
+  void toggleView(){
+    if(state is HomePageLoadedState){
+      final _state = state as HomePageLoadedState;
+      emit((_state).copyWith(
+        listView: !_state.listView
+      ));
+    }
+  }
 }

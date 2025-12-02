@@ -1,4 +1,4 @@
-import 'package:fakestore/core/libraries/router.dart';
+import 'package:fakestore/core/libraries/router.library.dart';
 import 'package:fakestore/core/dio/dio.dart';
 import 'package:fakestore/core/local_storages/cache.dart';
 import 'package:fakestore/core/local_storages/secure.cache.dart';
