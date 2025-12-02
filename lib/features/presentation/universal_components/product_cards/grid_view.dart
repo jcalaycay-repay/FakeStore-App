@@ -18,7 +18,14 @@ class GridViewProductCard extends StatelessWidget {
         color: ThemeSingleton.defaultTheme!.colorScheme.surface,
         borderRadius: BorderRadius.all(
           Radius.circular(8)
-        )
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: ThemeSingleton.defaultTheme!.shadowColor.withAlpha(50),
+            blurRadius: .25,
+            offset: Offset(0, .5)
+          )
+        ]
       ),
       child: IntrinsicHeight(
         child: Column(
@@ -43,10 +50,17 @@ class GridViewProductCard extends StatelessWidget {
                     children: [
                       Text(
                         item.name,
+                        style: Theme.of(context).textTheme.labelLarge,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      Text(item.price.toString()),
+                      Text(
+                        item.price.toString(),
+                        style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.error,
+                        ),
+                      ),
                     ],
                   ),
                   Row(
