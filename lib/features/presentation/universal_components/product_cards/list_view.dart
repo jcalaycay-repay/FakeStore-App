@@ -35,35 +35,52 @@ class ListViewProductCard extends StatelessWidget {
             Expanded(
               flex: 7,
               child: Column(
-                spacing: 8,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    item.name,
-                    style: Theme.of(context).textTheme.labelLarge,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                  ),
-                  Text(
-                    "\$${item.price.toStringAsFixed(2)}",
-                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.error,
+                  
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      spacing: 8,
+                      children: [
+                        Text(
+                          item.name,
+                          style: Theme.of(context).textTheme.labelLarge,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                        ),
+                        Text(
+                          "\$${item.price.toStringAsFixed(2)}",
+                          style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.error,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  RatingBar.builder(
-                    initialRating: item.rating.rate,
-                    itemSize: 12,
-                    ignoreGestures: true,
-                    glowColor: ThemeSingleton.defaultTheme!.highlightColor,
-                    itemBuilder: (context, int){
-                      return Icon(
-                        Icons.star,
-                        color: ThemeSingleton.defaultTheme!.colorScheme.primary,
-                      );
-                    }, 
-                    onRatingUpdate: (_) {}
-                  )
+                  Row(
+                    spacing: 4,
+                    children: [
+                      RatingBar.builder(
+                        initialRating: item.rating.rate,
+                        itemSize: 16,
+                        ignoreGestures: true,
+                        glowColor: ThemeSingleton.defaultTheme!.highlightColor,
+                        
+                        itemBuilder: (context, _){
+                          return Icon(
+                            Icons.star,
+                            color: ThemeSingleton.defaultTheme!.colorScheme.primary,
+                          );
+                        }, 
+                        onRatingUpdate: (_) {}
+                      ),
+                      Text(
+                        item.rating.count.toString()
+                      )
+                    ]
+                  ),
                 ],
               ),
             ),

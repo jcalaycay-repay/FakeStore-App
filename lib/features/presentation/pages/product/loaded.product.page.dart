@@ -12,7 +12,7 @@ class LoadedProductPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.sizeOf(context).height,
           width: MediaQuery.sizeOf(context).width,
           child: Column(
@@ -38,17 +38,26 @@ class LoadedProductPage extends StatelessWidget {
                         style: ThemeSingleton.defaultTheme!.textTheme.displayLarge,
                       ),
                       Text(productData.description),
-                      RatingBar.builder(
-                        initialRating: productData.rating.rate,
-                        maxRating: 5,
-                        allowHalfRating: true,
-                        ignoreGestures: true,
-                        itemBuilder: (context, int) => Icon(
-                          Icons.star,
-                          color: ThemeSingleton.defaultTheme!.colorScheme.primary,
-                        ), 
-                        onRatingUpdate: (_){}
-                      )
+                      Row(
+                        spacing: 12,
+                        children: [
+                           RatingBar.builder(
+                            initialRating: productData.rating.rate,
+                            maxRating: 5,
+                            allowHalfRating: true,
+                            ignoreGestures: true,
+                            itemBuilder: (context, int) => Icon(
+                              Icons.star,
+                              color: ThemeSingleton.defaultTheme!.colorScheme.primary,
+                            ), 
+                            onRatingUpdate: (_){}
+                          ),
+                          Text(
+                            "(${productData.rating.count})"
+                          )
+                        ]
+                      ),
+                     
                       
                     ],
                   ),
