@@ -13,42 +13,53 @@ class LoadedProductPage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: SizedBox(
-          height: MediaQuery.sizeOf(context).height,
           width: MediaQuery.sizeOf(context).width,
-          child: Column(
-            children: [
-              // Product Image
-              Expanded(
-                flex: 5,
-                child: Container(
+          child: IntrinsicHeight(
+            child: Column(
+              children: [
+                // Product Image
+                SizedBox(
+                  height: MediaQuery.sizeOf(context).height * 0.5,
                   child: CachedNetworkImage(
-                    imageUrl: productData.imageUrl
-                  ),
+                      imageUrl: productData.imageUrl
+                    ),
                 ),
-              ),
-              Expanded(
-                flex: 4,
-                child: Container(
-
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 8,
                     children: [
                       Text(
                         productData.name,
-                        style: ThemeSingleton.defaultTheme!.textTheme.displayLarge,
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold
+                        ),
                       ),
-                      Text(productData.description),
+                      Text(
+                        productData.description,
+                        maxLines: 3,
+                        style: ThemeSingleton.defaultTheme!.textTheme.bodySmall!.copyWith(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          color: ThemeSingleton.defaultTheme!.colorScheme.outline
+                        ),
+                      ),
                       Row(
                         spacing: 12,
                         children: [
-                           RatingBar.builder(
+                          RatingBar.builder(
+                            itemSize: 24,
                             initialRating: productData.rating.rate,
                             maxRating: 5,
                             allowHalfRating: true,
                             ignoreGestures: true,
-                            itemBuilder: (context, int) => Icon(
+                            itemBuilder: (context, _) => Icon(
                               Icons.star,
-                              color: ThemeSingleton.defaultTheme!.colorScheme.primary,
+                              color: Colors.orangeAccent,
                             ), 
                             onRatingUpdate: (_){}
                           ),
@@ -57,16 +68,16 @@ class LoadedProductPage extends StatelessWidget {
                           )
                         ]
                       ),
-                     
+                      
                       
                     ],
                   ),
                 )
-              ),
-              // Container(),
-              // Container(),
-            ]
-          
+                // Container(),
+                // Container(),
+              ]
+            
+            ),
           ),
         ),
       ),
@@ -78,11 +89,25 @@ class LoadedProductPage extends StatelessWidget {
           children: [
             Text(
               "\$${productData.price.toStringAsFixed(2)}",
+              style: ThemeSingleton.defaultTheme!.textTheme.headlineSmall!.copyWith(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.error,
+              )
             ),
             FilledButton(
               onPressed: (){}, 
+              style: ButtonStyle(
+                padding: WidgetStatePropertyAll(EdgeInsets.symmetric(
+                  vertical: 16,
+                  horizontal: 45
+                )),
+              ),
               child: Text(
-                "Add to Cart"
+                "Add to Cart",
+                style: TextStyle(
+                  fontSize: 16
+                ),
               )
             )
           ],

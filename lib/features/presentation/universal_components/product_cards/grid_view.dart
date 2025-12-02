@@ -64,7 +64,7 @@ class GridViewProductCard extends StatelessWidget {
                         ),
                         Text(
                           item.price.toString(),
-                          style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                          style: ThemeSingleton.defaultTheme!.textTheme.headlineSmall!.copyWith(
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).colorScheme.error,
                           ),
