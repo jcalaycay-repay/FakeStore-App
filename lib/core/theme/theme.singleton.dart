@@ -1,9 +1,9 @@
-import 'package:fakestore/core/theme/data.dart';
 import 'package:flutter/material.dart';
 
 class ThemeSingleton {
   ThemeSingleton._internal();
 
+  // ignore: unused_field
   static final ThemeSingleton _instance = ThemeSingleton._internal();
 
   static ThemeData? defaultTheme;

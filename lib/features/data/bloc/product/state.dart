@@ -4,7 +4,6 @@ abstract class ProductPageState extends Equatable {
   const ProductPageState();
 
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }
 

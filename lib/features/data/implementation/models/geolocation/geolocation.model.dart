@@ -12,5 +12,7 @@ abstract class GeolocationModel with _$GeolocationModel{
     @JsonKey(name: 'long') required double longitude,
   }) = _GeolocationModel;
 
+  
+
   factory GeolocationModel.fromJson(Map<String, dynamic> data) => _$GeolocationModelFromJson(data);
 }

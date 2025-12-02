@@ -1,3 +1,4 @@
+import 'package:fakestore/features/data/implementation/models/address/address.model.dart';
 import 'package:fakestore/features/data/implementation/models/name/name.model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,10 +13,10 @@ abstract class UserModel with _$UserModel {
     required String username,
     required NameModel name,
     @JsonKey(name: 'phone') phoneNunmber,
-    required String address,
+    required AddressModel address,
     required String email,
   }) =  _UserModel;
 
   
-  factory UserModel.fromJson(Map<String, Object?> data) => _$UserModelFromJson(data);
+  factory UserModel.fromJson(Map<String, dynamic> data) => _$UserModelFromJson(data);
 }
