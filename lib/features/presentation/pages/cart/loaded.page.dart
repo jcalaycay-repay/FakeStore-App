@@ -58,7 +58,12 @@ class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
               ),
             );
           }, 
-          separatorBuilder: (context, index) => SizedBox(height: 4,), 
+          separatorBuilder: (context, index) => SizedBox(
+            height: 8,
+            child: Divider(
+              color: Colors.grey.shade300,
+            ),
+          ), 
           itemCount: widget.cart.length
         ),
       ),
@@ -71,7 +76,16 @@ class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
               width: 1,
               color: ThemeSingleton.defaultTheme!.colorScheme.surfaceDim
             )
-          )
+          ),
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(0, -2),
+              blurRadius: 8,
+              spreadRadius: 2,
+              color: Colors.black.withAlpha(50)
+
+            )
+          ]
         ),
         child: IntrinsicHeight(
           child: Row(
