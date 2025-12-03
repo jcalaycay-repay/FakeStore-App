@@ -1,6 +1,6 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:fakestore/features/data/implementation/models/geolocation/geolocation.model.dart';
+import 'package:fakestore/features/data/models/geolocation/geolocation.model.dart';
 
 part 'address.model.freezed.dart';
 part 'address.model.g.dart';

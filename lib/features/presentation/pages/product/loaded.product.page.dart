@@ -10,6 +10,9 @@ class LoadedProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final productPageCubit = context.read<ProductPageCubit>();
+    final state = productPageCubit.state as ProductPageLoadedState;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: SizedBox(
@@ -95,13 +98,27 @@ class LoadedProductPage extends StatelessWidget {
                 color: Theme.of(context).colorScheme.error,
               )
             ),
+
+            // ! For Testing of Cart Deletion
+            // TextButton(
+            //   onPressed: () => NormalCache.remove(Storage.cart), 
+            //   child: Text(
+            //     "test"
+            //   )
+            // ),
             FilledButton(
-              onPressed: (){}, 
+              onPressed: () => context.read<ProductPageCubit>().addToCart(), 
+              
               style: ButtonStyle(
                 padding: WidgetStatePropertyAll(EdgeInsets.symmetric(
                   vertical: 16,
                   horizontal: 45
                 )),
+                backgroundColor: WidgetStatePropertyAll(
+                  state.inCart 
+                    ? ThemeSingleton.defaultTheme!.colorScheme.surfaceDim
+                    : ThemeSingleton.defaultTheme!.colorScheme.primary
+                )
               ),
               child: Text(
                 "Add to Cart",

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 enum RoutePage {
   home,
-  // cart,
+  cart,
   account;
 
   Icon getIcon() {
     return Icon(
       switch(this) {
         RoutePage.home => Icons.home,
-        // RoutePage.cart => Icons.shopping_bag,
+        RoutePage.cart => Icons.shopping_cart,
         RoutePage.account => Icons.account_circle,
       }
     );

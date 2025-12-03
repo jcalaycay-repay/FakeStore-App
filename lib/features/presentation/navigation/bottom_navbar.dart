@@ -11,17 +11,27 @@ class ShellBottomNavbar extends StatelessWidget {
 
  @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: currentIndex,
-      items: RoutePage.values.map(
-        (page) => BottomNavigationBarItem(
-          icon: page.getIcon(),
-          label: page.name
+    return Container(
+      decoration: BoxDecoration(
+        border:  Border(
+          top: BorderSide(
+            width: 1,
+            color: ThemeSingleton.defaultTheme!.colorScheme.surfaceDim
+          )
         )
-      ).toList(),
-      onTap:(value) { 
-        context.goNamed(RoutePage.values[value].name);
-      },
+      ),
+      child: BottomNavigationBar(
+        currentIndex: currentIndex,
+        items: RoutePage.values.map(
+          (page) => BottomNavigationBarItem(
+            icon: page.getIcon(),
+            label: page.name
+          )
+        ).toList(),
+        onTap:(value) { 
+          context.goNamed(RoutePage.values[value].name);
+        },
+      ),
     );
   }
 }

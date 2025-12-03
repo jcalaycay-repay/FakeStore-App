@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:fakestore/core/dio/dio.dart';
 import 'package:fakestore/core/local_storages/secure.cache.dart';
-import 'package:fakestore/features/data/implementation/models/user/user.model.dart';
+import 'package:fakestore/features/data/models/user/user.model.dart';
 import 'package:fakestore/features/domain/blueprints/account.dart';
 
 class AccountRepository implements AccountRepoBlueprint {
@@ -31,7 +31,7 @@ class AccountRepository implements AccountRepoBlueprint {
       }
     );
     dev.log("success: ${response.data}");
-
+    
     // Simulate fetching user data for authLogin
     // ignore: unused_local_variable
     final  user = await fetchUser(id: 1);

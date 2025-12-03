@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fakestore/core/theme/theme.singleton.dart';
-import 'package:fakestore/features/data/implementation/models/product/product.model.dart';
+import 'package:fakestore/features/data/models/product/product.model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:go_router/go_router.dart';
@@ -63,10 +63,11 @@ class GridViewProductCard extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          item.price.toString(),
+                          "\$${item.price.toStringAsFixed(2)}",
                           style: ThemeSingleton.defaultTheme!.textTheme.headlineSmall!.copyWith(
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).colorScheme.error,
+                            fontSize: 20
                           ),
                         ),
                       ],
@@ -78,11 +79,10 @@ class GridViewProductCard extends StatelessWidget {
                           initialRating: item.rating.rate,
                           itemSize: 16,
                           ignoreGestures: true,
-                          glowColor: ThemeSingleton.defaultTheme!.highlightColor,
                           itemBuilder: (context, _){
                             return Icon(
                               Icons.star,
-                              color: ThemeSingleton.defaultTheme!.colorScheme.primary,
+                              color: Colors.orangeAccent,
                             );
                           }, 
                           onRatingUpdate: (_) {}

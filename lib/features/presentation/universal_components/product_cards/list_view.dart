@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fakestore/core/theme/theme.singleton.dart';
-import 'package:fakestore/features/data/implementation/models/product/product.model.dart';
+import 'package:fakestore/features/data/models/product/product.model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:go_router/go_router.dart';
@@ -23,6 +23,7 @@ class ListViewProductCard extends StatelessWidget {
       child: Container(
         height: 150,
         padding: EdgeInsets.all(8),
+        color: ThemeSingleton.defaultTheme!.colorScheme.surface,
         child: Row(
           spacing: 16,
           children: [
@@ -71,7 +72,7 @@ class ListViewProductCard extends StatelessWidget {
                         itemBuilder: (context, _){
                           return Icon(
                             Icons.star,
-                            color: ThemeSingleton.defaultTheme!.colorScheme.primary,
+                            color: Colors.orangeAccent,
                           );
                         }, 
                         onRatingUpdate: (_) {}

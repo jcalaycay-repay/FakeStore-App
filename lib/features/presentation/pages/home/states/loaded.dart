@@ -31,7 +31,10 @@ class HomeLoadedPage extends StatelessWidget {
             crossAxisSpacing: 8,
             itemCount: productList.length,
             itemBuilder: (context, index) {
-              return GridViewProductCard(item: productList[index]);
+              return Container(
+                margin: index == 1 ? EdgeInsets.only(top: 24): null ,
+                child: GridViewProductCard(item: productList[index])
+              );
             },
           ),
       floatingActionButton: FloatingActionButton(

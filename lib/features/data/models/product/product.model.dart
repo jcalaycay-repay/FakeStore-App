@@ -1,4 +1,5 @@
-import 'package:fakestore/features/data/implementation/models/rating/rating.model.dart';
+import 'package:fakestore/features/data/models/cart_item/cart.item.model.dart';
+import 'package:fakestore/features/data/models/rating/rating.model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'product.model.freezed.dart';
@@ -11,6 +12,7 @@ abstract class ProductModel with _$ProductModel {
   const factory ProductModel({
     required int id,
     @JsonKey(name: 'title') required String name,
+    required String category,
     required double price,
     required String description,
     @JsonKey(name: 'image') required String imageUrl,
@@ -18,4 +20,13 @@ abstract class ProductModel with _$ProductModel {
   }) = _ProductModel;
 
   factory ProductModel.fromJson(Map<String, dynamic> data) => _$ProductModelFromJson(data);
+
+  CartItem toCartData({ required int quantity}) => CartItem(
+    id: id, 
+    name: name, 
+    category: category,
+    imageUrl: imageUrl,
+    price: price, 
+    quantity: quantity
+  );
 }

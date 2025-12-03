@@ -1,5 +1,5 @@
-import 'package:fakestore/features/data/implementation/models/address/address.model.dart';
-import 'package:fakestore/features/data/implementation/models/name/name.model.dart';
+import 'package:fakestore/features/data/models/address/address.model.dart';
+import 'package:fakestore/features/data/models/name/name.model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.model.freezed.dart';
