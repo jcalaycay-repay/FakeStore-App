@@ -22,6 +22,8 @@ class CartLoadedState extends CartState {
     required List<CartItem> cart
   }) => CartLoadedState(cart: cart);
 
+  bool get allItemsSelected => cart.every((item) => item.checked);
+
 
   double get totalPrice {
     final checkedItems = cart.where((item) => item.checked);
@@ -31,6 +33,7 @@ class CartLoadedState extends CartState {
   double get shippingFee {
     return cart.any((item) => item.checked) ? 0.75 : 0;
   }
+
   @override
   List<Object?> get props => [
     cart

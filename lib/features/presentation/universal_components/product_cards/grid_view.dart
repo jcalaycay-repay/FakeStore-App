@@ -63,10 +63,11 @@ class GridViewProductCard extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          item.price.toString(),
+                          "\$${item.price.toStringAsFixed(2)}",
                           style: ThemeSingleton.defaultTheme!.textTheme.headlineSmall!.copyWith(
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).colorScheme.error,
+                            fontSize: 20
                           ),
                         ),
                       ],

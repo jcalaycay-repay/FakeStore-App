@@ -23,6 +23,7 @@ class ListViewProductCard extends StatelessWidget {
       child: Container(
         height: 150,
         padding: EdgeInsets.all(8),
+        color: ThemeSingleton.defaultTheme!.colorScheme.surface,
         child: Row(
           spacing: 16,
           children: [
@@ -71,7 +72,7 @@ class ListViewProductCard extends StatelessWidget {
                         itemBuilder: (context, _){
                           return Icon(
                             Icons.star,
-                            color: ThemeSingleton.defaultTheme!.colorScheme.primary,
+                            color: Colors.orangeAccent,
                           );
                         }, 
                         onRatingUpdate: (_) {}

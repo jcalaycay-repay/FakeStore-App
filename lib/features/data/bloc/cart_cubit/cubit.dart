@@ -29,4 +29,14 @@ class CartCubit extends Cubit<CartState> {
       .updateCart(cart: cart)
     );
   }
+
+  void selectAll(bool value) {
+    
+    if(state is! CartLoadedState) return;
+    final cart = List<CartItem>.from((state as CartLoadedState).cart);
+    final newCart = cart.map(
+      (item) => item.copyWith(checked: value)
+    ).toList();
+    emit((state as CartLoadedState).updateCart(cart: newCart));
+  }
 }

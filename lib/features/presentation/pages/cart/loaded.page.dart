@@ -10,6 +10,7 @@ class CartPageLoadedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartCubit = context.read<CartCubit>();
+    final cartState = cartCubit.state as CartLoadedState;
     
     return Scaffold(
       body: SizedBox(
@@ -49,8 +50,8 @@ class CartPageLoadedPage extends StatelessWidget {
               Row(
                 children: [
                   Checkbox.adaptive(
-                    value: false, 
-                    onChanged: (value) {}
+                    value: cartState.allItemsSelected, 
+                    onChanged: (value) => cartCubit.selectAll(value!)
                   ),
                   Text(
                     'All',
@@ -78,7 +79,7 @@ class CartPageLoadedPage extends StatelessWidget {
                             )
                           ),
                           TextSpan(
-                            text: '\$${(cartCubit.state as CartLoadedState).totalPrice}',
+                            text: '\$${(cartCubit.state as CartLoadedState).totalPrice.toStringAsFixed(2)}',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -117,7 +118,7 @@ class CartPageLoadedPage extends StatelessWidget {
                         horizontal: 16
                       ),
                       decoration: BoxDecoration(
-                        color: ThemeSingleton.defaultTheme!.colorScheme.error,
+                        color: Colors.orangeAccent,
                         borderRadius: BorderRadius.all(
                           Radius.circular(8)
                         )
@@ -125,7 +126,7 @@ class CartPageLoadedPage extends StatelessWidget {
                       child: Text(
                         'Checkout',
                         style: ThemeSingleton.defaultTheme!.textTheme.labelLarge!.copyWith(
-                          color: ThemeSingleton.defaultTheme!.colorScheme.errorContainer,
+                          color: ThemeSingleton.defaultTheme!.colorScheme.surface,
                           fontWeight: FontWeight.bold,
                           fontSize: 16
                         ),
