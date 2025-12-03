@@ -31,9 +31,9 @@ class AccountRepository implements AccountRepoBlueprint {
       }
     );
     dev.log("success: ${response.data}");
-
-    // ignore: unused_local_variable
+    
     // Simulate fetching user data for authLogin
+    // ignore: unused_local_variable
     final  user = await fetchUser(id: 1);
     await authLogin({
         "username": 'mor_2314',

@@ -4,7 +4,6 @@ class CartState extends Equatable {
   const CartState();
 
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }
 
@@ -23,6 +22,15 @@ class CartLoadedState extends CartState {
     required List<CartItem> cart
   }) => CartLoadedState(cart: cart);
 
+
+  double get totalPrice {
+    final checkedItems = cart.where((item) => item.checked);
+    return checkedItems.fold<double>(0, (previousValue, nextItem) => previousValue + (nextItem.price * nextItem.quantity));
+  }
+
+  double get shippingFee {
+    return cart.any((item) => item.checked) ? 0.75 : 0;
+  }
   @override
   List<Object?> get props => [
     cart

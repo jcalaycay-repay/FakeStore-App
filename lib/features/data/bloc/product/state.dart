@@ -28,7 +28,6 @@ class ProductPageLoadedState extends ProductPageState {
   );
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
     productData, inCart
   ];

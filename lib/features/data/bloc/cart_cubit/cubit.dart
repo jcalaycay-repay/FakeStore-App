@@ -19,15 +19,14 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
-  void addToSelection(CartItem newItem){
-    print("Add to Selection");
+  void modifyCartItem(CartItem newItem, int  index){
     if(state is! CartLoadedState) return;
     final cart = List<CartItem>.from((state as CartLoadedState).cart);
-    final index = cart.indexWhere((item) => item.id == newItem.id);
 
     cart[index] = newItem;
 
-    emit((state as CartLoadedState).updateCart(cart: cart)   );
-
+    emit((state as CartLoadedState)
+      .updateCart(cart: cart)
+    );
   }
 }
