@@ -39,4 +39,18 @@ class CartCubit extends Cubit<CartState> {
     ).toList();
     emit((state as CartLoadedState).updateCart(cart: newCart));
   }
+
+  void deleteSelected({required bool sure}) {
+    if(state is! CartLoadedState || !sure) return;
+    final cart = List<CartItem>.from((state as CartLoadedState).cart);
+
+    cart.removeWhere(
+      (item) => item.checked
+    );
+
+    emit( cart.isNotEmpty 
+      ? CartLoadedState(cart: cart)
+      : CartEmptyState(),
+    );
+  }
 }

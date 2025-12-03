@@ -11,6 +11,7 @@ import 'package:fakestore/features/data/repositories/cart.dart';
 import 'package:fakestore/features/presentation/pages/cart/empty.page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 
 // Cubit
@@ -23,3 +24,4 @@ part '../../../features/data/bloc/cart_cubit/logic.dart';
 part '../../../features/presentation/pages/cart/loaded.page.dart';
 part '../../../features/presentation/pages/cart/loading.page.dart';
 part '../../../features/presentation/pages/cart/components/cart.card.dart';
+part '../../../features/presentation/pages/cart/components/delete.confirmation.modal.dart';

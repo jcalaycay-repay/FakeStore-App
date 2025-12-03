@@ -19,6 +19,7 @@ class _MainShellState extends State<MainShell> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: ThemeSingleton.defaultTheme!.colorScheme.surface,
         title: Text("FakeStore"),
         leading: Icon(
           Icons.shopify

@@ -1,6 +1,6 @@
 part of CartPageLibrary; 
 
-class CartPageLoadedPage extends StatelessWidget {
+class CartPageLoadedPage extends StatefulWidget {
   final List<CartItem> cart;
   const CartPageLoadedPage({
     required this.cart,
@@ -8,17 +8,43 @@ class CartPageLoadedPage extends StatelessWidget {
   });
 
   @override
+  State<CartPageLoadedPage> createState() => _CartPageLoadedPageState();
+}
+
+class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
+  @override
   Widget build(BuildContext context) {
     final cartCubit = context.read<CartCubit>();
     final cartState = cartCubit.state as CartLoadedState;
     
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ThemeSingleton.defaultTheme!.colorScheme.surface,
+        leading: GestureDetector(
+          onTap: cartState.anyItemSelected 
+            ? () => showDialog(
+              context: context, 
+              builder: (context) => DeleteConfirmationModal()
+            ).then(
+              (value) => cartCubit.deleteSelected(sure: value)
+            )
+            : null,
+          child: Icon(
+            Icons.delete_outline,
+            size: 28,
+            color: cartState.anyItemSelected 
+              ? ThemeSingleton.defaultTheme!.colorScheme.error
+              : ThemeSingleton.defaultTheme!.colorScheme.surfaceDim,
+          ),
+        ),
+        scrolledUnderElevation: 0,
+      ), 
       body: SizedBox(
         height: MediaQuery.sizeOf(context).height,
         width: MediaQuery.sizeOf(context).width,
         child: ListView.separated(
           itemBuilder: (context, index) {
-            final item = cart[index];
+            final item = widget.cart[index];
             return CartCard(
               item: item,
               addToSelectionCallback: (value) => cartCubit.modifyCartItem(
@@ -30,12 +56,13 @@ class CartPageLoadedPage extends StatelessWidget {
             );
           }, 
           separatorBuilder: (context, index) => SizedBox(height: 4,), 
-          itemCount: cart.length
+          itemCount: widget.cart.length
         ),
       ),
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
+          color: ThemeSingleton.defaultTheme!.colorScheme.surface,
           border: Border(
             top: BorderSide(
               width: 1,

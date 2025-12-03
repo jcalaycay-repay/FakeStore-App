@@ -15,7 +15,10 @@ class CartCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 124,
-      padding: EdgeInsets.all(8),
+      padding: EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: 8
+      ),
       child: Row(
         spacing: 16,
         children: [
