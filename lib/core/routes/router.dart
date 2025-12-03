@@ -50,6 +50,13 @@ final router = GoRouter(
             create: (context) => AccountPageCubit(),
             child: AccountPage(),
           ),
+          routes: [
+            GoRoute(
+              path: '/account/listing',
+              name: 'productListing'
+              builder: 
+            )
+          ]
 
         )
       ]

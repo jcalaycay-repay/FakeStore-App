@@ -14,6 +14,7 @@ import 'package:fakestore/features/domain/styles/general.input.decoration.dart';
 import 'package:fakestore/features/presentation/pages/account/states/no_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 //Cubit
 part '../../../features/data/bloc/account_cubit/cubit.dart';
@@ -25,5 +26,6 @@ part '../../../features/presentation/pages/account/states/loading.dart';
 part '../../../features/presentation/pages/account/states/loaded.dart';
 part '../../../features/presentation/pages/account/states/signup.dart';
 part '../../../features/presentation/pages/account/states/login.dart';
+part '../../../features/presentation/pages/account/components/section.wrapper.dart';
 
 
