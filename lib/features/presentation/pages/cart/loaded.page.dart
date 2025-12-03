@@ -48,10 +48,13 @@ class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
             return CartCard(
               item: item,
               addToSelectionCallback: (value) => cartCubit.modifyCartItem(
-                item.copyWith(checked: value!), index
+                item.copyWith(checked: value!), 
+                index,
               ),
               changeQuantityCallback: (value) => cartCubit.modifyCartItem(
-                item.copyWith(quantity: item.quantity + value), index
+                item.copyWith(quantity: item.quantity + value), 
+                index,
+                updateCache: true
               ),
             );
           }, 
@@ -150,20 +153,25 @@ class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
                           Radius.circular(8)
                         )
                       ),
-                      child: Text(
-                        'Checkout',
-                        style: ThemeSingleton.defaultTheme!.textTheme.labelLarge!.copyWith(
-                          color: ThemeSingleton.defaultTheme!.colorScheme.surface,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16
-                        ),
+                      child: Row(
+                        spacing: 4,
+                        children: [
+                          Text(
+                            'Checkout',
+                            style: ThemeSingleton.defaultTheme!.textTheme.labelLarge!.copyWith(
+                              color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16
+                            ),
+                          ),
+                          Icon(
+                            Icons.shopping_cart_checkout,
+                            color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+                          )
+                        ],
                       ),
                     ),
                   )
-                  
-                  // Text(
-                  //   '${(cartCubit.state as CartLoadedState).totalPrice}'
-                  // )
                 ],
               ),
             ],

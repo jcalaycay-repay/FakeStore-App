@@ -19,28 +19,46 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
-  void modifyCartItem(CartItem newItem, int  index){
+  void modifyCartItem(
+    CartItem newItem, 
+    int  index, {
+    bool updateCache = false
+  }) async {
     if(state is! CartLoadedState) return;
     final cart = List<CartItem>.from((state as CartLoadedState).cart);
 
     cart[index] = newItem;
-
-    emit((state as CartLoadedState)
-      .updateCart(cart: cart)
-    );
+  
+    switch(updateCache) {
+      case true:
+        CartRepository().updateCart(cart)
+          .then((value) {
+            emit((state as CartLoadedState)
+              .updateCart(cart: cart)
+            );
+          });
+        break;
+      case false:
+        emit((state as CartLoadedState)
+          .updateCart(cart: cart)
+        );
+    }
   }
 
   void selectAll(bool value) {
-    
     if(state is! CartLoadedState) return;
+    
     final cart = List<CartItem>.from((state as CartLoadedState).cart);
     final newCart = cart.map(
       (item) => item.copyWith(checked: value)
     ).toList();
-    emit((state as CartLoadedState).updateCart(cart: newCart));
+
+    emit((state as CartLoadedState)
+      .updateCart(cart: newCart)
+    );
   }
 
-  void deleteSelected({required bool sure}) {
+  void deleteSelected({required bool sure}) async {
     if(state is! CartLoadedState || !sure) return;
     final cart = List<CartItem>.from((state as CartLoadedState).cart);
 
@@ -48,9 +66,17 @@ class CartCubit extends Cubit<CartState> {
       (item) => item.checked
     );
 
-    emit( cart.isNotEmpty 
-      ? CartLoadedState(cart: cart)
-      : CartEmptyState(),
-    );
+    CartRepository().updateCart(cart)
+      .then((success) {
+        if(!success) {
+          log("Save unsuccessful");
+          return;
+        }
+
+        emit( cart.isNotEmpty 
+            ? CartLoadedState(cart: cart)
+            : CartEmptyState(),
+          );
+      });
   }
 }
