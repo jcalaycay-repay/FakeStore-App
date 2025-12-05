@@ -17,86 +17,60 @@ class SignupPage extends StatelessWidget {
     final FocusNode passwordNode = FocusNode();
     final FocusNode confirmPasswordNode = FocusNode();
 
-    return Container(
-      height: screen.height,
-      padding: EdgeInsets.all(32),
-      child: Form(
-        key: formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              spacing: 12,
-              children: [
-                TextFormField(
-                  decoration: generalInputStyle(
-                    labelText: "Username"
-                  ),
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 32), 
+          child: SingleChildScrollView(
+            child: CustomForm(
+              formTitle: 'Sign Up to FakeStore',
+              formContent: [
+                CustomInput(
                   controller: signupState.username,
-                  focusNode: usernameNode,
-                  validator: (value) => requiredField(value),
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: Validator.required,
+                  labelText: 'Username',
+                  
                 ),
-                TextFormField(
-                  decoration: generalInputStyle(
-                    labelText: "E-mail address",
-                    // hintText: "E-mail address",
-                  ),
+                CustomInput(
                   controller: signupState.email,
-                  focusNode: emailNode,
-                  validator: (value) => requiredField(value),
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: Validator.required,
+                  labelText: 'Email Address',
+                  
                 ),
-                TextFormField(
-                  decoration: generalInputStyle(
-                    labelText: "Password"
-                  ),
-                  obscureText: true,
+                CustomInput(
                   controller: signupState.password,
-                  focusNode: passwordNode,
-                  validator: (value) => requiredField(value),
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: Validator.password,
+                  labelText: 'Password',
+                  
+                ),
+                CustomInput(
+                  controller: signupState.confirmPassword,
+                  validator: Validator.confirmPassword,
+                  labelText: 'Confirm Password',
+                  
                 ),
                 
-                TextFormField(
-                  decoration: generalInputStyle(
-                    hintText: "Confirm Password"
-                  ),
-                  obscureText: true,
-                  validator: (value) => confirmPassword(value, signupState.password.value.text),
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  controller: signupState.confirmPassword,
-                  focusNode: confirmPasswordNode,
-                ),
-              ],
-            ),
-            
-
-            Row(
-              children: [
-                Flexible(
-                  fit: FlexFit.tight,
-                  child: FilledButton(
-                    onPressed: () {
-                      if(formKey.currentState!.validate()){
-                        accountContext.submitForm(
-                          signupState.toMap()
-                        );
-                      }
-                    }, 
-                    style: ButtonStyle(
-                      padding: WidgetStatePropertyAll(
-                        EdgeInsets.symmetric( vertical: 16, horizontal: 16 ),
+                Row(
+                  children: [
+                    Flexible(
+                      fit: FlexFit.tight,
+                      child: CustomButton(
+                        onPressed: () {
+                          if(formKey.currentState!.validate()){
+                            accountContext.submitForm(
+                              signupState.toMap()
+                            );
+                          }
+                        }, 
+                        text: 
+                          "Submit",
                       ),
                     ),
-                    child: Text(
-                      "Submit"
-                    )
-                  ),
-                ),
-              ],
-            )
-          ]
+                  ],
+                )
+              ]
+            ),
+          ),
         ),
       ),
     );

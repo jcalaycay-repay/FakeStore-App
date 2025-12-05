@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fakestore/features/data/models/product/product.model.dart';
 import 'package:fakestore/core/dio/dio.dart';
 import 'package:fakestore/features/domain/blueprints/product.dart';
@@ -25,5 +27,22 @@ class ProductRepository implements ProductRepoBlueprint {
       );
 
       return ProductModel.fromJson(response.data);
+    }
+
+    @override
+    Future<void> uploadProduct(Map<String, dynamic> data) async {
+      final response = await dio.post(
+        '/products',
+        data: {
+          "id": 69,
+          "title": data['title'],
+          "price": data['price'],
+          "description": data['description'],
+          "category": data['category'],
+          "image": data['imageUrl'],
+        }
+      );
+
+      print(response.data);
     }
 }

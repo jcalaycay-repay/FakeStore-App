@@ -1,6 +1,8 @@
 part of RouterLibrary;
 
 final GlobalKey<NavigatorState> navigatorState = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>();
+
 
 final router = GoRouter(
   navigatorKey: navigatorState,
@@ -53,8 +55,9 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: '/account/listing',
-              name: 'productListing'
-              builder: 
+              name: 'productListing',
+              builder: (context, state) => ProductListingForm()
+
             )
           ]
 

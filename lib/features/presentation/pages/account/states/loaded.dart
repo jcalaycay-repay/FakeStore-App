@@ -110,6 +110,7 @@ class AccountLoadedPage extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
+                    onTap: () => context.pushNamed('productListing'),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -179,18 +180,18 @@ class AccountLoadedPage extends StatelessWidget {
                   ),
                 ],
               ),
+
+               Container(
+                 alignment: Alignment.bottomCenter,
+                 child: TextButton(
+                   onPressed: () => accountContext.logout(),
+                   child: Text("Log Out"),
+                 ),
+               ),
             ],
           ),
 
-          //     Expanded(
-          //       child: Container(
-          //         alignment: Alignment.bottomCenter,
-          //         child: TextButton(
-          //           onPressed: () => accountContext.logout(),
-          //           child: Text("Log Out"),
-          //         ),
-          //       ),
-          //     ),
+             
         ),
       ),
     );
