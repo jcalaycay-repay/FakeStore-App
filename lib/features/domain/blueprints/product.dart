@@ -4,4 +4,6 @@ abstract class ProductRepoBlueprint {
   Future<List<ProductModel>> fetchAllProducts();
 
   Future<ProductModel> fetchProductById(int id);
+
+  Future<void> uploadProduct(Map<String, dynamic> data);
 }

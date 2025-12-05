@@ -17,3 +17,16 @@ String confirmPassword(String? value, String password, {
 
   return '';
 }
+
+// String validatePassword(String value) {
+//   List<String> messages = [];
+
+//   if(value.length < 8) {
+//     messages.add('at least 8 characters');
+//   } else if (value.length > 15) {
+//     messages.add('not more than 15 charcters');
+//   }
+
+//   if(value.contains(RegExp(source)))
+
+// }

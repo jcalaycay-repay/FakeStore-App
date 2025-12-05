@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     formKey = GlobalKey<FormState>();
     usernameNode = FocusNode();
-    passwordNode = FocusNode();    
+    passwordNode = FocusNode();
     super.initState();
   }
 
@@ -25,42 +25,24 @@ class _LoginPageState extends State<LoginPage> {
     final accountCubit = context.read<AccountPageCubit>();
     final state = accountCubit.state as LoginState;
 
-    return Form(
-      key: formKey,
+    return Center(
       child: Container(
-        height: MediaQuery.sizeOf(context).height,
-        padding: EdgeInsets.symmetric(
-          vertical: 16,
-          horizontal: 32
-        ),
-        child: Column(
-          spacing: 32,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
-              spacing: 12,
-              children: [
-                TextFormField(
-                  controller: state.username,
-                  validator: (value) => requiredField(value!),
-                  onTapOutside: (event) => usernameNode.unfocus(),
-                  decoration: generalInputStyle(
-                    labelText: "Username"
-                  ),
-                ),
-                TextFormField(
-                  controller: state.password,
-                  validator: (value) => requiredField(value),
-                  obscureText: true,
-                  onTapOutside: (event) => passwordNode.unfocus(),
-                  decoration: generalInputStyle(
-                    labelText: "Password"
-                  ),
-                ),
-              ],
+        padding: EdgeInsets.symmetric(horizontal: 32),
+        child: CustomForm(
+          formKey: formKey,
+          formTitle: 'Login',
+          formContent: [
+            CustomInput(
+              controller: state.username,
+              validator: Validator.required,
+              labelText: 'Username',
             ),
-
-
+            CustomInput(
+              controller: state.password,
+              validator: Validator.required,
+              labelText: 'Password',
+            ),
+        
             Column(
               children: [
                 Row(
@@ -70,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: () {
                           if(formKey.currentState!.validate()) accountCubit.submitForm(state.toMap());
                         },
-                        style: filledButtonStyle(),
+                        style: filledButtonStyle,
                         child: Text(
                           "Submit"
                         ),

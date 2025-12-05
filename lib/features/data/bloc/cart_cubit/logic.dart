@@ -18,9 +18,6 @@ class _CartPageLogicState extends State<CartPageLogic> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CartCubit, CartState>(
-      // listener: (context, state) {
-      //   log(state.runtimeType.toString());
-      // },
       builder: (context, state) => switch(state) {
         CartInitState() || CartLoadingState() => CartPageLoadingPage(),
         CartLoadedState(: var cart) => CartPageLoadedPage(cart: cart,),

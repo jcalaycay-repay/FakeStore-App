@@ -16,6 +16,6 @@ part '../../../features/data/bloc/home_cubit/cubit.dart';
 part '../../../features/data/bloc/home_cubit/state.dart';
 
 // Presentation
-part '../../../features/presentation/pages/home/main.dart';
+part '../../../features/data/bloc/home_cubit/logic.dart';
 part '../../../features/presentation/pages/home/states/loaded.dart';
 part '../../../features/presentation/pages/home/states/loading.dart';
