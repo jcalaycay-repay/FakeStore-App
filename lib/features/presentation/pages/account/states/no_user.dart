@@ -45,7 +45,6 @@ class NoUserPage extends StatelessWidget {
               Expanded(
                 child: FilledButton(
                   onPressed: () => accountContext.navigateToSignup(),
-                  style: filledButtonStyle,
                   child: Text(
                     "Sign Up",
                     style: TextStyle(

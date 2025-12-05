@@ -1,11 +1,8 @@
-part of CartPageLibrary; 
+part of CartPageLibrary;
 
 class CartPageLoadedPage extends StatefulWidget {
   final List<CartItem> cart;
-  const CartPageLoadedPage({
-    required this.cart,
-    super.key
-  });
+  const CartPageLoadedPage({required this.cart, super.key});
 
   @override
   State<CartPageLoadedPage> createState() => _CartPageLoadedPageState();
@@ -16,56 +13,50 @@ class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
   Widget build(BuildContext context) {
     final cartCubit = context.read<CartCubit>();
     final cartState = cartCubit.state as CartLoadedState;
-    
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ThemeSingleton.defaultTheme!.colorScheme.surface,
-        leading: GestureDetector(
-          onTap: cartState.anyItemSelected 
-            ? () => showDialog(
-              context: context, 
-              builder: (context) => DeleteConfirmationModal()
-            ).then(
-              (value) => cartCubit.deleteSelected(sure: value)
-            )
-            : null,
-          child: Icon(
+        leading: IconButton(
+          onPressed: cartState.anyItemSelected
+              ? () => showDialog(
+                  context: context,
+                  builder: (context) => DeleteConfirmationModal(),
+                ).then((value) => cartCubit.deleteSelected(sure: value))
+              : null,
+          icon: Icon(
             Icons.delete_outline,
             size: 28,
-            color: cartState.anyItemSelected 
-              ? ThemeSingleton.defaultTheme!.colorScheme.error
-              : ThemeSingleton.defaultTheme!.colorScheme.surfaceDim,
+            color: cartState.anyItemSelected
+                ? ThemeSingleton.defaultTheme!.colorScheme.error
+                : ThemeSingleton.defaultTheme!.colorScheme.surfaceDim,
           ),
         ),
         scrolledUnderElevation: 0,
-      ), 
-      body: SizedBox(
-        height: MediaQuery.sizeOf(context).height,
-        width: MediaQuery.sizeOf(context).width,
-        child: ListView.separated(
-          itemBuilder: (context, index) {
-            final item = widget.cart[index];
-            return CartCard(
-              item: item,
-              addToSelectionCallback: (value) => cartCubit.modifyCartItem(
-                item.copyWith(checked: value!), 
-                index,
-              ),
-              changeQuantityCallback: (value) => cartCubit.modifyCartItem(
-                item.copyWith(quantity: item.quantity + value), 
-                index,
-                updateCache: true
-              ),
-            );
-          }, 
-          separatorBuilder: (context, index) => SizedBox(
-            height: 8,
-            child: Divider(
-              color: Colors.grey.shade300,
-            ),
-          ), 
-          itemCount: widget.cart.length
+      ),
+      body: ListView.separated(
+        itemCount: widget.cart.length,
+        separatorBuilder: (context, index) => SizedBox(
+          height: 8,
+          child: Divider(
+            color: Colors.grey.shade300,
+          ),
         ),
+        itemBuilder: (context, index) {
+          final item = widget.cart[index];
+          return CartCard(
+            item: item,
+            addToSelectionCallback: (value) => cartCubit.modifyCartItem(
+              item.copyWith(checked: value!),
+              index,
+            ),
+            changeQuantityCallback: (value) => cartCubit.modifyCartItem(
+              item.copyWith(quantity: item.quantity + value),
+              index,
+              updateCache: true,
+            ),
+          );
+        },
       ),
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(16),
@@ -74,18 +65,17 @@ class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
           border: Border(
             top: BorderSide(
               width: 1,
-              color: ThemeSingleton.defaultTheme!.colorScheme.surfaceDim
-            )
+              color: ThemeSingleton.defaultTheme!.colorScheme.surfaceDim,
+            ),
           ),
           boxShadow: [
             BoxShadow(
               offset: Offset(0, -2),
               blurRadius: 8,
               spreadRadius: 2,
-              color: Colors.black.withAlpha(50)
-
-            )
-          ]
+              color: Colors.black.withAlpha(50),
+            ),
+          ],
         ),
         child: IntrinsicHeight(
           child: Row(
@@ -94,16 +84,16 @@ class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
               Row(
                 children: [
                   Checkbox.adaptive(
-                    value: cartState.allItemsSelected, 
-                    onChanged: (value) => cartCubit.selectAll(value!)
+                    value: cartState.allItemsSelected,
+                    onChanged: (value) => cartCubit.selectAll(value!),
                   ),
                   Text(
                     'All',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
-                      color: Colors.grey.shade600
-                    )
+                      color: Colors.grey.shade600,
+                    ),
                   ),
                 ],
               ),
@@ -114,78 +104,102 @@ class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text.rich(
-                        TextSpan(children: [
-                          TextSpan(
-                            text: 'Subtotal: ',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold
-                            )
-                          ),
-                          TextSpan(
-                            text: '\$${(cartCubit.state as CartLoadedState).totalPrice.toStringAsFixed(2)}',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: ThemeSingleton.defaultTheme!.colorScheme.error
-                            )
-                          ),
-                        ])
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                              text: 'Subtotal: ',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            TextSpan(
+                              text:
+                                  '\$${(cartCubit.state as CartLoadedState).totalPrice.toStringAsFixed(2)}',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: ThemeSingleton
+                                    .defaultTheme!
+                                    .colorScheme
+                                    .error,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       Text.rich(
-                        TextSpan(children: [
-                          TextSpan(
-                            text: 'Shipping Fee: ',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.grey.shade600
-                            )
-                          ),
-                          TextSpan(
-                            text: '\$${(cartCubit.state as CartLoadedState).shippingFee}',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: ThemeSingleton.defaultTheme!.colorScheme.error
-                            )
-                          ),
-                        ])
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                              text: 'Shipping Fee: ',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.grey.shade600,
+                              ),
+                            ),
+                            TextSpan(
+                              text:
+                                  '\$${(cartCubit.state as CartLoadedState).shippingFee}',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: ThemeSingleton
+                                    .defaultTheme!
+                                    .colorScheme
+                                    .error,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-              
-                  GestureDetector(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 8,
-                        horizontal: 16
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.orangeAccent,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8)
-                        )
-                      ),
-                      child: Row(
-                        spacing: 4,
-                        children: [
-                          Text(
-                            'Checkout',
-                            style: ThemeSingleton.defaultTheme!.textTheme.labelLarge!.copyWith(
-                              color: ThemeSingleton.defaultTheme!.colorScheme.surface,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16
-                            ),
-                          ),
-                          Icon(
-                            Icons.shopping_cart_checkout,
-                            color: ThemeSingleton.defaultTheme!.colorScheme.surface,
-                          )
-                        ],
-                      ),
+
+                  FilledButton.icon(
+                    onPressed: () {},
+                    label: Text('Checkout'),
+                    icon: Icon(
+                      Icons.shopping_cart_checkout,
+                      color: ThemeSingleton.defaultTheme!.colorScheme.surface,
                     ),
-                  )
+                    iconAlignment: IconAlignment.end,
+                    style: FilledButton.styleFrom(
+                      backgroundColor: Colors.orangeAccent,
+                    ) ,
+                  ),
+                  // GestureDetector(
+                  //   child: Container(
+                  //     padding: EdgeInsets.symmetric(
+                  //       vertical: 8,
+                  //       horizontal: 16
+                  //     ),
+                  //     decoration: BoxDecoration(
+                  //       color: Colors.orangeAccent,
+                  //       borderRadius: BorderRadius.all(
+                  //         Radius.circular(8)
+                  //       )
+                  //     ),
+                  //     child: Row(
+                  //       spacing: 4,
+                  //       children: [
+                  //         Text(
+                  //           'Checkout',
+                  //           style: ThemeSingleton.defaultTheme!.textTheme.labelLarge!.copyWith(
+                  //             color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+                  //             fontWeight: FontWeight.bold,
+                  //             fontSize: 16
+                  //           ),
+                  // ),
+                  // Icon(
+                  //   Icons.shopping_cart_checkout,
+                  //   color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+                  // )
+                  //       ],
+                  //     ),
+                  //   ),
+                  // )
                 ],
               ),
             ],

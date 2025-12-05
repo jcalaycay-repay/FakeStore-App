@@ -50,24 +50,24 @@ class SignupPage extends StatelessWidget {
                   
                 ),
                 
-                Row(
-                  children: [
-                    Flexible(
-                      fit: FlexFit.tight,
-                      child: CustomButton(
-                        onPressed: () {
-                          if(formKey.currentState!.validate()){
-                            accountContext.submitForm(
-                              signupState.toMap()
-                            );
-                          }
-                        }, 
-                        text: 
-                          "Submit",
-                      ),
-                    ),
-                  ],
-                )
+                // Row(
+                //   children: [
+                //     Flexible(
+                //       fit: FlexFit.tight,
+                //       child: CustomButton(
+                //         onPressed: () {
+                //           if(formKey.currentState!.validate()){
+                //             accountContext.submitForm(
+                //               signupState.toMap()
+                //             );
+                //           }
+                //         }, 
+                //         text: 
+                //           "Submit",
+                //       ),
+                //     ),
+                //   ],
+                // )
               ]
             ),
           ),

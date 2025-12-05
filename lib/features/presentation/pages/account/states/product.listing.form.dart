@@ -10,7 +10,6 @@ import 'package:fakestore/features/domain/enums/input.type.dart';
 import 'package:fakestore/features/domain/enums/validator.dart';
 import 'package:fakestore/features/domain/styles/custom.button.style.dart';
 import 'package:fakestore/features/domain/styles/general.input.decoration.dart';
-import 'package:fakestore/features/presentation/universal_components/custom.button.dart';
 import 'package:fakestore/features/presentation/universal_components/custom.form.dart';
 import 'package:fakestore/features/presentation/universal_components/custom.input.dart';
 import 'package:fakestore/features/presentation/universal_components/file.upload.area.dart';
@@ -32,6 +31,15 @@ class _ProductListingFormState extends State<ProductListingForm> {
   String? productImage;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    priceController.dispose();
+    descriptionController.dispose();
+    categoryController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +76,9 @@ class _ProductListingFormState extends State<ProductListingForm> {
                     source: ImageSource.camera,
                     callback: (file) {
                       if (file == null) return;
-                        setState(() {
-                          productImage = file.path;
-                        });
+                      setState(() {
+                        productImage = file.path;
+                      });
                     },
                   ),
                 ),
@@ -106,7 +114,9 @@ class _ProductListingFormState extends State<ProductListingForm> {
                     nameController = TextEditingController(
                       text: "Bocchi the Rock Nendoroid",
                     );
-                    priceController = TextEditingController(text: 42.01.toString());
+                    priceController = TextEditingController(
+                      text: 42.01.toString(),
+                    );
                     descriptionController = TextEditingController(
                       text: "Bocchi the Rock Nendoroid",
                     );
@@ -119,10 +129,9 @@ class _ProductListingFormState extends State<ProductListingForm> {
                   child: Text('Load Dummy data'),
                 ),
 
-                CustomButton(
-                  text: "Submit",
+                FilledButton(
                   onPressed: () {
-                      if (formKey.currentState!.validate() && productImage != null) {
+                    if (formKey.currentState!.validate() && productImage != null) {
                       final data = {
                         "title": nameController.value.text,
                         "price": priceController.value.text,
@@ -130,11 +139,31 @@ class _ProductListingFormState extends State<ProductListingForm> {
                         "category": categoryController.value.text,
                         "imageUrl": productImage,
                       };
-                
+
                       ProductRepository().uploadProduct(data);
                     }
-                  }
-                )
+                  },
+                  child: Text(
+                    'Submit',
+                  ),
+                ),
+
+                // CustomButton(
+                //   text: "Submit",
+                //   onPressed: () {
+                    //   if (formKey.currentState!.validate() && productImage != null) {
+                    //   final data = {
+                    //     "title": nameController.value.text,
+                    //     "price": priceController.value.text,
+                    //     "description": descriptionController.value.text,
+                    //     "category": categoryController.value.text,
+                    //     "imageUrl": productImage,
+                    //   };
+
+                    //   ProductRepository().uploadProduct(data);
+                    // }
+                //   }
+                // )
               ],
             ),
           ],

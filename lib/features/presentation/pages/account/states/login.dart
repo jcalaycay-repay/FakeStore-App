@@ -52,7 +52,6 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: () {
                           if(formKey.currentState!.validate()) accountCubit.submitForm(state.toMap());
                         },
-                        style: filledButtonStyle,
                         child: Text(
                           "Submit"
                         ),

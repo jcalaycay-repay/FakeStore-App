@@ -22,55 +22,48 @@ class CustomForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
-      child: IntrinsicHeight(
-        child: Row(
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+          border: Border.all(
+            width: 2,
+            color:
+                ThemeSingleton.defaultTheme!.colorScheme.surfaceDim,
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Expanded(
-              child: Container(
+          
+            // Form Head (Title)
+            if(formTitle != null && formTitle!.isNotEmpty)
+              Container(
+                padding: EdgeInsets.all(24),
                 decoration: BoxDecoration(
-                  color: ThemeSingleton.defaultTheme!.colorScheme.surface,
-                  border: Border.all(
-                    width: 2,
-                    color:
-                        ThemeSingleton.defaultTheme!.colorScheme.surfaceDim,
-                  ),
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
-                ),
-                child: Column(
-                  children: [
-        
-                    // Form Head (Title)
-                    if(formTitle != null && formTitle!.isNotEmpty)
-                      Container(
-                        padding: EdgeInsets.all(24),
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              // width: .5,
-                              color: Colors.grey.shade300,
-                            ),
-                          ),
-                        ),
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          formTitle!,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-        
-                    // Form Body
-                    Padding(
-                      padding: EdgeInsets.all(24),
-                      child: Column(
-                        spacing: 16,
-                        children: formContent,
-                      ),
+                  border: Border(
+                    bottom: BorderSide(
+                      // width: .5,
+                      color: Colors.grey.shade300,
                     ),
-                  ],
+                  ),
                 ),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  formTitle!,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+          
+            // Form Body
+            Padding(
+              padding: EdgeInsets.all(24),
+              child: Column(
+                spacing: 16,
+                children: formContent,
               ),
             ),
           ],

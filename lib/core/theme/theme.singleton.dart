@@ -10,7 +10,15 @@ class ThemeSingleton {
   static ThemeData? darkTheme;
 
   static void init()  {
-      defaultTheme = ThemeData.light();
+      defaultTheme = ThemeData.light().copyWith(
+        filledButtonTheme: FilledButtonThemeData(
+          style: FilledButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadiusGeometry.circular(8)
+            )
+          )
+        )
+      );
       darkTheme = ThemeData.dark();
   }
 

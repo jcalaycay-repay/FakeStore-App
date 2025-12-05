@@ -5,6 +5,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>()
 
 
 final router = GoRouter(
+  
   navigatorKey: navigatorState,
   routes: [
     ShellRoute(
@@ -52,18 +53,19 @@ final router = GoRouter(
             create: (context) => AccountPageCubit(),
             child: AccountPage(),
           ),
-          routes: [
-            GoRoute(
-              path: '/account/listing',
-              name: 'productListing',
-              builder: (context, state) => ProductListingForm()
-
-            )
-          ]
-
         )
       ]
+    ),
+
+    GoRoute(
+      path: '/listing',
+      name: 'productListing',
+      builder: (context, state) => BlocProvider(
+        create: (context) => ProductListingCubit(),
+        child: ProductListingPageLogic(),
+      ),
     )
     
-  ]
+  ],
+  
 );
