@@ -24,11 +24,11 @@ class CustomForm extends StatelessWidget {
       key: formKey,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+          color: ThemeManager.colorScheme.surface,
           border: Border.all(
             width: 2,
             color:
-                ThemeSingleton.defaultTheme!.colorScheme.surfaceDim,
+                ThemeManager.colorScheme.surfaceDim,
           ),
           borderRadius: BorderRadius.all(Radius.circular(12)),
         ),

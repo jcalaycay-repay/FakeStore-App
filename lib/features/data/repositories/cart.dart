@@ -6,31 +6,24 @@ import 'package:fakestore/features/data/models/product/product.model.dart';
 import 'package:fakestore/features/domain/enums/storage.dart';
 
 class CartRepository {
-
-  Future<bool> add(ProductModel item, { int quantity = 1}) async {
-    if(cartContains(item.id)) return false;
+  Future<bool> add(ProductModel item, {int quantity = 1}) async {
+    if (cartContains(item.id)) return false;
 
     final cartData = item.toCartData(quantity: quantity);
 
-    return await NormalCache.setStringList( Storage.cart, [
-      ...getCart, 
-      jsonEncode(cartData.toJson())
+    return await NormalCache.setStringList(Storage.cart, [
+      ...getCart,
+      jsonEncode(cartData.toJson()),
     ]);
-
   }
 
   Future<(bool, String message)> removeItem(int id) async {
-    final cart = getCart.map(
-      (item) => jsonDecode(item)
-    ).toList();
+    final cart = getCart.map((item) => jsonDecode(item)).toList();
     final initialLength = cart.length;
-    
 
-    cart.removeWhere(
-      (item) => id == item['id']
-    );
-    
-    if(initialLength == cart.length) return (false, 'Item is not in the cart');
+    cart.removeWhere((item) => id == item['id']);
+
+    if (initialLength == cart.length) return (false, 'Item is not in the cart');
 
     return (true, 'Successfully removed from the cart');
   }
@@ -39,12 +32,14 @@ class CartRepository {
 
   Future<bool> updateCart(List<CartItem> cart) async {
     try {
-      final deserializedCart = cart.map(
-        (item) => jsonEncode(item.toJson())
-      ).toList();
+      final deserializedCart = cart
+          .map((item) => jsonEncode(item.toJson()))
+          .toList();
 
-      print(deserializedCart);
-      final success = await NormalCache.setStringList(Storage.cart, deserializedCart);
+      final success = await NormalCache.setStringList(
+        Storage.cart,
+        deserializedCart,
+      );
 
       return success;
     } catch (e) {
@@ -53,13 +48,9 @@ class CartRepository {
   }
 
   bool cartContains(int id) {
-    final cart = getCart.map(
-      (item) => jsonDecode(item)
-    ).toList();
-    
-    cart.removeWhere(
-      (item) => id != item['id']
-    );
+    final cart = getCart.map((item) => jsonDecode(item)).toList();
+
+    cart.removeWhere((item) => id != item['id']);
 
     return cart.isNotEmpty;
   }

@@ -28,13 +28,13 @@ class AccountLoadedPage extends StatelessWidget {
                     ),
                     border: Border.all(
                       width: 2,
-                      color: ThemeSingleton.defaultTheme!.colorScheme.primary,
+                      color: ThemeManager.colorScheme.primary,
                     ),
                   ),
                   child: Icon(
                     Icons.account_circle,
                     size: 160,
-                    color: ThemeSingleton.defaultTheme!.colorScheme.primary,
+                    color: ThemeManager.colorScheme.primary,
                   ),
                 ),
 
@@ -103,7 +103,10 @@ class AccountLoadedPage extends StatelessWidget {
                   contentPadding: EdgeInsets.zero,
                 ),
                 ListTile(
-                  onTap: () => context.goNamed('productListing'),
+                  onTap: () => context.pushNamed(
+                    'productListing',
+                    extra: user
+                  ),
                   title: Text('Product Listing'),
                   trailing: Icon(
                     Icons.chevron_right

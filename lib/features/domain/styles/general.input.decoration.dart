@@ -23,7 +23,7 @@ InputDecoration generalInputStyle({
   ),
   border: OutlineInputBorder(
     borderSide: BorderSide(
-      color: ThemeSingleton.defaultTheme!.colorScheme.surfaceDim,
+      color: ThemeManager.colorScheme.surfaceDim,
     ),
     borderRadius: BorderRadius.all(
       Radius.circular(10)
@@ -31,7 +31,7 @@ InputDecoration generalInputStyle({
   ),
   enabledBorder:  OutlineInputBorder(
     borderSide: BorderSide(
-      color: ThemeSingleton.defaultTheme!.colorScheme.surfaceDim,
+      color: ThemeManager.colorScheme.surfaceDim,
     ),
     borderRadius: BorderRadius.all(
       Radius.circular(10)
@@ -39,7 +39,7 @@ InputDecoration generalInputStyle({
   ),
   focusedBorder: OutlineInputBorder(
     borderSide: BorderSide(
-      color: ThemeSingleton.defaultTheme!.colorScheme.surfaceDim,
+      color: ThemeManager.colorScheme.surfaceDim,
     ),
     borderRadius: BorderRadius.all(
       Radius.circular(10)

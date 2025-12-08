@@ -20,14 +20,14 @@ class DeleteConfirmationModal extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: ThemeSingleton.defaultTheme!.colorScheme.errorContainer,
+                        color: ThemeManager.colorScheme.errorContainer,
                         borderRadius: BorderRadius.all(
                           Radius.circular(16)
                         )
                       ),
                       child: Icon(
                         Icons.delete_outlined,
-                        color: ThemeSingleton.defaultTheme!.colorScheme.error,
+                        color: ThemeManager.colorScheme.error,
                         size: 32
                       ),
                     ),
@@ -62,7 +62,7 @@ class DeleteConfirmationModal extends StatelessWidget {
                                 vertical: 8
                               ),
                               decoration: BoxDecoration(
-                                color: ThemeSingleton.defaultTheme!.colorScheme.surfaceDim,
+                                color: ThemeManager.colorScheme.surfaceDim,
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(12)
                                 )
@@ -70,7 +70,7 @@ class DeleteConfirmationModal extends StatelessWidget {
                               child: Text(
                                 'Cancel',
                                 style: TextStyle(
-                                  color: ThemeSingleton.defaultTheme!.colorScheme.onSurfaceVariant,
+                                  color: ThemeManager.colorScheme.onSurfaceVariant,
                                   fontWeight: FontWeight.bold
                                 ),
                               ),
@@ -86,7 +86,7 @@ class DeleteConfirmationModal extends StatelessWidget {
                                 vertical: 8
                               ),
                               decoration: BoxDecoration(
-                                color: ThemeSingleton.defaultTheme!.colorScheme.error,
+                                color: ThemeManager.colorScheme.error,
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(12)
                                 )
@@ -94,7 +94,7 @@ class DeleteConfirmationModal extends StatelessWidget {
                               child: Text(
                                 'Confirm',
                                 style: TextStyle(
-                                  color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+                                  color: ThemeManager.colorScheme.surface,
                                   fontWeight: FontWeight.bold
                                 ),
                               ),
@@ -117,7 +117,7 @@ class DeleteConfirmationModal extends StatelessWidget {
     //         vertical: 25
     //       ),
     //       decoration: BoxDecoration(
-    //         color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+    //         color: ThemeManager.colorScheme.surface,
     //         borderRadius: BorderRadius.all(
     //           Radius.circular(16)
     //         )
@@ -139,7 +139,7 @@ class DeleteConfirmationModal extends StatelessWidget {
     //                 ),
     //                 child: Icon(
     //                   Icons.close,
-    //                   color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+    //                   color: ThemeManager.colorScheme.surface,
     //                   size: 16,
     //                 )
     //               ),

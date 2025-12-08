@@ -12,7 +12,7 @@ class SectionWrapper extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+        color: ThemeManager.colorScheme.surface,
         borderRadius: BorderRadius.all(
           Radius.circular(16)
         ),

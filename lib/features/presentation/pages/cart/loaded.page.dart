@@ -16,7 +16,7 @@ class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ThemeSingleton.defaultTheme!.colorScheme.surface,
+        backgroundColor: ThemeManager.colorScheme.surface,
         leading: IconButton(
           onPressed: cartState.anyItemSelected
               ? () => showDialog(
@@ -28,8 +28,8 @@ class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
             Icons.delete_outline,
             size: 28,
             color: cartState.anyItemSelected
-                ? ThemeSingleton.defaultTheme!.colorScheme.error
-                : ThemeSingleton.defaultTheme!.colorScheme.surfaceDim,
+                ? ThemeManager.colorScheme.error
+                : ThemeManager.colorScheme.surfaceDim,
           ),
         ),
         scrolledUnderElevation: 0,
@@ -61,11 +61,11 @@ class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+          color: ThemeManager.colorScheme.surface,
           border: Border(
             top: BorderSide(
               width: 1,
-              color: ThemeSingleton.defaultTheme!.colorScheme.surfaceDim,
+              color: ThemeManager.colorScheme.surfaceDim,
             ),
           ),
           boxShadow: [
@@ -119,10 +119,7 @@ class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                color: ThemeSingleton
-                                    .defaultTheme!
-                                    .colorScheme
-                                    .error,
+                                color: ThemeManager.colorScheme.error,
                               ),
                             ),
                           ],
@@ -145,10 +142,7 @@ class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
-                                color: ThemeSingleton
-                                    .defaultTheme!
-                                    .colorScheme
-                                    .error,
+                                color: ThemeManager.colorScheme.error,
                               ),
                             ),
                           ],
@@ -162,12 +156,12 @@ class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
                     label: Text('Checkout'),
                     icon: Icon(
                       Icons.shopping_cart_checkout,
-                      color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+                      color: ThemeManager.colorScheme.surface,
                     ),
                     iconAlignment: IconAlignment.end,
                     style: FilledButton.styleFrom(
                       backgroundColor: Colors.orangeAccent,
-                    ) ,
+                    ),
                   ),
                   // GestureDetector(
                   //   child: Container(
@@ -186,15 +180,15 @@ class _CartPageLoadedPageState extends State<CartPageLoadedPage> {
                   //       children: [
                   //         Text(
                   //           'Checkout',
-                  //           style: ThemeSingleton.defaultTheme!.textTheme.labelLarge!.copyWith(
-                  //             color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+                  //           style: ThemeManager.textTheme.labelLarge!.copyWith(
+                  //             color: ThemeManager.colorScheme.surface,
                   //             fontWeight: FontWeight.bold,
                   //             fontSize: 16
                   //           ),
                   // ),
                   // Icon(
                   //   Icons.shopping_cart_checkout,
-                  //   color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+                  //   color: ThemeManager.colorScheme.surface,
                   // )
                   //       ],
                   //     ),

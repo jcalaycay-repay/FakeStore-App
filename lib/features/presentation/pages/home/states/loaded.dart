@@ -11,8 +11,8 @@ class HomeLoadedPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: homeState.listView 
-        ? ThemeSingleton.defaultTheme!.colorScheme.surface
-        : ThemeSingleton.defaultTheme!.colorScheme.surfaceContainer,
+        ? ThemeManager.colorScheme.surface
+        : ThemeManager.colorScheme.surfaceContainer,
       body: homeState.listView 
         ? ListView.separated(
           padding: EdgeInsets.all(8),
@@ -39,10 +39,10 @@ class HomeLoadedPage extends StatelessWidget {
           ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => homeCubit.toggleView(),
-        backgroundColor: ThemeSingleton.defaultTheme!.colorScheme.primary,
+        backgroundColor: ThemeManager.colorScheme.primary,
         child: Icon(
           homeState.listView ? Icons.list : Icons.window,
-          color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+          color: ThemeManager.colorScheme.surface,
         ),
       ),
     );

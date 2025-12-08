@@ -34,7 +34,7 @@ class NoUserPage extends StatelessWidget {
               Text(
                 "OR",
                 style: TextStyle(
-                  color: ThemeSingleton.defaultTheme!.disabledColor
+                  color: ThemeManager.disabledColor
                 ),
               ),
               Expanded(child: Divider())

@@ -60,10 +60,16 @@ final router = GoRouter(
     GoRoute(
       path: '/listing',
       name: 'productListing',
-      builder: (context, state) => BlocProvider(
-        create: (context) => ProductListingCubit(),
-        child: ProductListingPageLogic(),
-      ),
+      builder: (context, state) {
+        final UserModel userData = state.extra as UserModel;
+
+        return BlocProvider(
+          create: (context) => ProductListingCubit(),
+          child: ProductListingPageLogic(
+            user: userData,
+          ),
+        );
+      } 
     )
     
   ],

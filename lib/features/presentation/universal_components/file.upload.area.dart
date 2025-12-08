@@ -23,7 +23,7 @@ class FileUploadArea extends StatelessWidget {
             radius: Radius.circular(16),
             strokeWidth: 2,
             dashPattern: [5, 5],
-            color: ThemeSingleton.defaultTheme!.colorScheme.surfaceDim,
+            color: ThemeManager.colorScheme.surfaceDim,
           ),
           child: SizedBox(
             height: 150,
@@ -53,7 +53,7 @@ class FileUploadArea extends StatelessWidget {
                         text: 'Click to browse',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: ThemeSingleton.defaultTheme!.colorScheme.primary,
+                          color: ThemeManager.colorScheme.primary,
                         ),
                       ),
                     ],

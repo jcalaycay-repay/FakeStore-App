@@ -15,7 +15,7 @@ Future<void> main() async {
 
   
   configureDio();
-  ThemeSingleton.init();
+  ThemeManager.init();
 
   runApp(const MyApp());
 }
@@ -27,8 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Fake Store',
-      theme: ThemeSingleton.defaultTheme,
-      darkTheme: ThemeSingleton.darkTheme,
+      theme: ThemeManager.theme,
       routerConfig: router,
     );
   }

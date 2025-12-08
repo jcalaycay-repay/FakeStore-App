@@ -23,13 +23,13 @@ class GridViewProductCard extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+          color: ThemeManager.colorScheme.surface,
           borderRadius: BorderRadius.all(
             Radius.circular(8)
           ),
           boxShadow: [
             BoxShadow(
-              color: ThemeSingleton.defaultTheme!.shadowColor.withAlpha(50),
+              color: ThemeManager.shadowColor.withAlpha(50),
               blurRadius: .25,
               offset: Offset(0, .5)
             )
@@ -64,7 +64,7 @@ class GridViewProductCard extends StatelessWidget {
                         ),
                         Text(
                           "\$${item.price.toStringAsFixed(2)}",
-                          style: ThemeSingleton.defaultTheme!.textTheme.headlineSmall!.copyWith(
+                          style: ThemeManager.textTheme.headlineSmall!.copyWith(
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).colorScheme.error,
                             fontSize: 20

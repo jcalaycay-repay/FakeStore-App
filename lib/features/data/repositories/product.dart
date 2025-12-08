@@ -8,8 +8,7 @@ import 'package:fakestore/core/dio/dio.dart';
 import 'package:fakestore/features/domain/blueprints/product.dart';
 import 'package:fakestore/features/domain/enums/storage.dart';
 
-class ProductRepository implements ProductRepoBlueprint {
-  @override
+class ProductRepository {
   Future<List<ProductModel>> fetchAllProducts() async {
     final response = await dio.get(
       "/products",
@@ -24,7 +23,6 @@ class ProductRepository implements ProductRepoBlueprint {
     return productList;
   }
 
-  @override
   Future<ProductModel> fetchProductById(int id) async {
     final response = await dio.get(
       "/products/$id",
@@ -33,12 +31,11 @@ class ProductRepository implements ProductRepoBlueprint {
     return ProductModel.fromJson(response.data);
   }
 
-  @override
   Future<void> uploadProduct(Map<String, dynamic> data) async {
     final body = {
       "id": _randomizer,
       "title": data['title'],
-      "price": data['price'],
+      "price": double.parse(data['price']),
       "description": data['description'],
       "category": data['category'],
       "image": data['imageUrl'],
@@ -49,10 +46,27 @@ class ProductRepository implements ProductRepoBlueprint {
 
     final list = NormalCache.getStringList(Storage.productListing);
 
-    NormalCache.setStringList(Storage.productListing, [
+    await NormalCache.setStringList(Storage.productListing, [
       ...(list ?? []),
       jsonEncode(body),
     ]);
+  }
+
+  void deleteProduct({int id = 1}) {
+    NormalCache.remove(Storage.productListing);
+  }
+
+  List<ProductModel> getListing() {
+    final List<String> locallyStoredListing =
+        NormalCache.getStringList(Storage.productListing) ?? [];
+
+    // print(locallyStoredListing.isEmpty);
+
+    final parsedListing = locallyStoredListing
+        .map((item) => ProductModel.fromJson(jsonDecode(item)))
+        .toList();
+
+    return parsedListing;
   }
 
   int get _randomizer => Random().nextInt(1000);

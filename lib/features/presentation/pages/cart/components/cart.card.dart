@@ -67,14 +67,8 @@ class CartCard extends StatelessWidget {
                           child: Icon(
                             Icons.indeterminate_check_box_rounded,
                             color: item.quantity == 1
-                                ? ThemeSingleton
-                                      .defaultTheme!
-                                      .colorScheme
-                                      .surfaceDim
-                                : ThemeSingleton
-                                      .defaultTheme!
-                                      .colorScheme
-                                      .primary,
+                                ? ThemeManager.colorScheme.surfaceDim
+                                : ThemeManager.colorScheme.primary,
                           ),
                         ),
                         Text(item.quantity.toString()),
@@ -82,10 +76,7 @@ class CartCard extends StatelessWidget {
                           onTap: () => changeQuantityCallback(1),
                           child: Icon(
                             Icons.add_box_rounded,
-                            color: ThemeSingleton
-                                .defaultTheme!
-                                .colorScheme
-                                .primary,
+                            color: ThemeManager.colorScheme.primary,
                           ),
                         ),
                       ],
