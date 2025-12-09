@@ -17,21 +17,29 @@ class _MainShellState extends State<MainShell> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: ThemeSingleton.defaultTheme!.colorScheme.surface,
-        title: Text("FakeStore"),
-        leading: Icon(
-          Icons.shopify
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: ThemeManager.colorScheme.surface,
+          title: Text("FakeStore"),
+          leading: Icon(
+            Icons.shopify
+          ),
+          scrolledUnderElevation: 0,
+          actions: [
+            Switch(
+              value: ThemeManager.theme.brightness == Brightness.dark, 
+              onChanged: (value) => ThemeManager.toggleTheme()
+            )
+          ],
         ),
-        scrolledUnderElevation: 0,
-      ),
-      body: widget.child,
-      bottomNavigationBar: ShellBottomNavbar(
-        routerState: widget.routerState,
-        currentIndex: RoutePage.values.indexWhere(
-          (page) => page.name == widget.routerState.name
-        ) + 1,
+        body: widget.child,
+        bottomNavigationBar: ShellBottomNavbar(
+          routerState: widget.routerState,
+          currentIndex: RoutePage.values.indexWhere(
+            (page) => page.name == widget.routerState.name
+          ) + 1,
+        ),
       ),
     );
   }

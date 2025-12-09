@@ -45,10 +45,10 @@ class LoadedProductPage extends StatelessWidget {
                       Text(
                         productData.description,
                         maxLines: 3,
-                        style: ThemeSingleton.defaultTheme!.textTheme.bodySmall!.copyWith(
+                        style: ThemeManager.textTheme.bodySmall!.copyWith(
                           fontWeight: FontWeight.w500,
                           fontSize: 16,
-                          color: ThemeSingleton.defaultTheme!.colorScheme.outline
+                          color: ThemeManager.colorScheme.outline
                         ),
                       ),
                       Row(
@@ -92,7 +92,7 @@ class LoadedProductPage extends StatelessWidget {
           children: [
             Text(
               "\$${productData.price.toStringAsFixed(2)}",
-              style: ThemeSingleton.defaultTheme!.textTheme.headlineSmall!.copyWith(
+              style: ThemeManager.textTheme.headlineSmall!.copyWith(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).colorScheme.error,
@@ -116,8 +116,8 @@ class LoadedProductPage extends StatelessWidget {
                 )),
                 backgroundColor: WidgetStatePropertyAll(
                   state.inCart 
-                    ? ThemeSingleton.defaultTheme!.colorScheme.surfaceDim
-                    : ThemeSingleton.defaultTheme!.colorScheme.primary
+                    ? ThemeManager.colorScheme.surfaceDim
+                    : ThemeManager.colorScheme.primary
                 )
               ),
               child: Text(

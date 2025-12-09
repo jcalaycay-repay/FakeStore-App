@@ -6,19 +6,14 @@ import 'package:equatable/equatable.dart';
 import 'package:fakestore/core/local_storages/secure.cache.dart';
 import 'package:fakestore/core/theme/theme.singleton.dart';
 import 'package:fakestore/features/data/models/user/user.model.dart';
-import 'package:fakestore/features/data/functions/validators.dart';
 import 'package:fakestore/features/data/repositories/account.dart';
 import 'package:fakestore/features/domain/enums/storage.dart';
 import 'package:fakestore/features/domain/enums/validator.dart';
-import 'package:fakestore/features/domain/styles/custom.button.style.dart';
-import 'package:fakestore/features/domain/styles/general.input.decoration.dart';
 import 'package:fakestore/features/presentation/pages/account/states/no_user.dart';
-import 'package:fakestore/features/presentation/universal_components/custom.button.dart';
 import 'package:fakestore/features/presentation/universal_components/custom.form.dart';
 import 'package:fakestore/features/presentation/universal_components/custom.input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 
 //Cubit

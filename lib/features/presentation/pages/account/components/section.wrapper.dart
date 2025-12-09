@@ -12,7 +12,7 @@ class SectionWrapper extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: ThemeSingleton.defaultTheme!.colorScheme.surfaceDim,
+        color: ThemeManager.colorScheme.surface,
         borderRadius: BorderRadius.all(
           Radius.circular(16)
         ),
@@ -24,15 +24,10 @@ class SectionWrapper extends StatelessWidget {
           )
         ]
       ),
-      child: ListView.separated(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        itemBuilder: (context, index) => children[index], 
-        separatorBuilder: (context, index) => SizedBox(
-          height: 16,
-        ), 
-        itemCount: children.length
-      ),
+      child: Column(
+        spacing: 16,
+        children: children
+      )
     );
   }
 }

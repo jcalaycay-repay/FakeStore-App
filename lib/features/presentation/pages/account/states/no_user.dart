@@ -1,6 +1,5 @@
 import 'package:fakestore/core/libraries/presentation/account.page.library.dart';
 import 'package:fakestore/core/theme/theme.singleton.dart';
-import 'package:fakestore/features/domain/styles/custom.button.style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,7 +33,7 @@ class NoUserPage extends StatelessWidget {
               Text(
                 "OR",
                 style: TextStyle(
-                  color: ThemeSingleton.defaultTheme!.disabledColor
+                  color: ThemeManager.disabledColor
                 ),
               ),
               Expanded(child: Divider())
@@ -45,7 +44,6 @@ class NoUserPage extends StatelessWidget {
               Expanded(
                 child: FilledButton(
                   onPressed: () => accountContext.navigateToSignup(),
-                  style: filledButtonStyle,
                   child: Text(
                     "Sign Up",
                     style: TextStyle(

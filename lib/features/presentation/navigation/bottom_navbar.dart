@@ -16,7 +16,7 @@ class ShellBottomNavbar extends StatelessWidget {
         border:  Border(
           top: BorderSide(
             width: 1,
-            color: ThemeSingleton.defaultTheme!.colorScheme.surfaceDim
+            color: ThemeManager.colorScheme.surfaceDim
           )
         )
       ),

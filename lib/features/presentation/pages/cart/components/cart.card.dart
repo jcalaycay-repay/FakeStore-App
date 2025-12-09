@@ -8,25 +8,22 @@ class CartCard extends StatelessWidget {
     required this.item,
     required this.addToSelectionCallback,
     required this.changeQuantityCallback,
-    super.key
+    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 124,
-      padding: EdgeInsets.symmetric(
-        horizontal: 12,
-        vertical: 8
-      ),
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       child: Row(
         spacing: 16,
         children: [
           Expanded(
             flex: 2,
             child: Checkbox.adaptive(
-              value: item.checked, 
-              onChanged: (value) => addToSelectionCallback(value)
+              value: item.checked,
+              onChanged: (value) => addToSelectionCallback(value),
             ),
           ),
           Expanded(
@@ -39,67 +36,52 @@ class CartCard extends StatelessWidget {
             flex: 16,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              spacing: 8,
               children: [
-                
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    spacing: 8,
-                    children: [
-                      Text(
-                        item.name,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500
+                Text(
+                  item.name,
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "\$${item.price.toStringAsFixed(2)}",
+                      style: Theme.of(context).textTheme.headlineSmall!
+                          .copyWith(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.error,
+                          ),
+                    ),
+                    Row(
+                      spacing: 24,
+                      children: [
+                        InkWell(
+                          onTap: item.quantity == 1
+                              ? null
+                              : () => changeQuantityCallback(-1),
+                          child: Icon(
+                            Icons.indeterminate_check_box_rounded,
+                            color: item.quantity == 1
+                                ? ThemeManager.colorScheme.surfaceDim
+                                : ThemeManager.colorScheme.primary,
+                          ),
                         ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                      ),
-                      Expanded(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              "\$${item.price.toStringAsFixed(2)}",
-                              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Theme.of(context).colorScheme.error,
-                              ),
-                            ),
-                            Row(
-                              spacing: 24,
-                              children: [
-                                GestureDetector(
-                                  onTap: item.quantity == 1 
-                                    ? null 
-                                    : () => changeQuantityCallback(-1),
-                                  child: Icon(
-                                    Icons.indeterminate_check_box_rounded,
-                                    color: item.quantity == 1 
-                                      ? ThemeSingleton.defaultTheme!.colorScheme.surfaceDim 
-                                      : ThemeSingleton.defaultTheme!.colorScheme.primary,
-                                  ),
-                                ),
-                                Text(
-                                  item.quantity.toString()
-                                ),
-                                GestureDetector(
-                                  onTap: () => changeQuantityCallback(1),
-                                  child: Icon(
-                                    Icons.add_box_rounded,
-                                    color: ThemeSingleton.defaultTheme!.colorScheme.primary,
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
+                        Text(item.quantity.toString()),
+                        InkWell(
+                          onTap: () => changeQuantityCallback(1),
+                          child: Icon(
+                            Icons.add_box_rounded,
+                            color: ThemeManager.colorScheme.primary,
+                          ),
                         ),
-                      )
-                      
-                    ],
-                  ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),

@@ -23,7 +23,7 @@ class ListViewProductCard extends StatelessWidget {
       child: Container(
         height: 150,
         padding: EdgeInsets.all(8),
-        color: ThemeSingleton.defaultTheme!.colorScheme.surface,
+        color: ThemeManager.colorScheme.surface,
         child: Row(
           spacing: 16,
           children: [
@@ -67,7 +67,7 @@ class ListViewProductCard extends StatelessWidget {
                         initialRating: item.rating.rate,
                         itemSize: 16,
                         ignoreGestures: true,
-                        glowColor: ThemeSingleton.defaultTheme!.highlightColor,
+                        glowColor: ThemeManager.highlightColor,
                         
                         itemBuilder: (context, _){
                           return Icon(

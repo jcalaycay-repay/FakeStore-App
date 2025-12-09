@@ -1,4 +1,3 @@
-import 'package:fakestore/core/theme/theme.singleton.dart';
 import 'package:fakestore/features/domain/enums/input.type.dart';
 import 'package:fakestore/features/domain/enums/validator.dart';
 import 'package:fakestore/features/domain/styles/general.input.decoration.dart';

@@ -52,18 +52,25 @@ final router = GoRouter(
             create: (context) => AccountPageCubit(),
             child: AccountPage(),
           ),
-          routes: [
-            GoRoute(
-              path: '/account/listing',
-              name: 'productListing',
-              builder: (context, state) => ProductListingForm()
-
-            )
-          ]
-
         )
       ]
+    ),
+
+    GoRoute(
+      path: '/listing',
+      name: 'productListing',
+      builder: (context, state) {
+        final UserModel userData = state.extra as UserModel;
+
+        return BlocProvider(
+          create: (context) => ProductListingCubit(),
+          child: ProductListingPageLogic(
+            user: userData,
+          ),
+        );
+      } 
     )
     
-  ]
+  ],
+  
 );

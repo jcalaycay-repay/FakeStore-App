@@ -24,7 +24,7 @@ class FilledButton extends StatelessWidget {
           vertical: 8
         ),
         decoration: BoxDecoration(
-          color: ThemeSingleton.defaultTheme!.colorScheme.primary,
+          color: ThemeManager.colorScheme.primary,
         ),
       ),
     );

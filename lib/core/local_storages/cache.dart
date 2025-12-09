@@ -26,8 +26,10 @@ class NormalCache {
 
 
   // TYPE List<String>
-  static List<String>? getStringList(Storage key) {
+  static List<String>? getStringList(Storage key, {bool viewValue = true}) {
     final value = _instance!.getStringList(key.name);
+
+    if(viewValue) print(value);
 
     return value;
   }
