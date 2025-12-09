@@ -6,6 +6,4 @@ abstract class ProductRepoBlueprint {
   Future<ProductModel> fetchProductById(int id);
 
   Future<void> uploadProduct(Map<String, dynamic> data);
-
-  int _randomizer();
 }

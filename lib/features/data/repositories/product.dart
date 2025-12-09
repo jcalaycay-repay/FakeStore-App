@@ -1,11 +1,9 @@
 import 'dart:convert';
-import 'dart:math';
 
-import 'package:dio/dio.dart';
 import 'package:fakestore/core/local_storages/cache.dart';
+import 'package:fakestore/features/data/functions/randomizer.dart';
 import 'package:fakestore/features/data/models/product/product.model.dart';
 import 'package:fakestore/core/dio/dio.dart';
-import 'package:fakestore/features/domain/blueprints/product.dart';
 import 'package:fakestore/features/domain/enums/storage.dart';
 
 class ProductRepository {
@@ -33,7 +31,7 @@ class ProductRepository {
 
   Future<void> uploadProduct(Map<String, dynamic> data) async {
     final body = {
-      "id": _randomizer,
+      "id": randomNumber,
       "title": data['title'],
       "price": double.parse(data['price']),
       "description": data['description'],
@@ -68,6 +66,4 @@ class ProductRepository {
 
     return parsedListing;
   }
-
-  int get _randomizer => Random().nextInt(1000);
 }

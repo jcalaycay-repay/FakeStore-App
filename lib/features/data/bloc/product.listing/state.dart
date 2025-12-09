@@ -4,7 +4,6 @@ class ProductListingState extends Equatable {
   const ProductListingState();
 
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }
 
@@ -24,7 +23,6 @@ class ProductListingLoadedState extends ProductListingState {
   );
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
     list
   ];
@@ -72,7 +70,6 @@ class ProductCreationState extends ProductListingState {
   );
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
     nameController,
     priceController,         

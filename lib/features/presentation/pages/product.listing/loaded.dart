@@ -1,13 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fakestore/core/libraries/presentation/product.listing.library.dart';
-import 'package:fakestore/core/local_storages/secure.cache.dart';
 import 'package:fakestore/core/theme/theme.singleton.dart';
 import 'package:fakestore/features/data/models/user/user.model.dart';
-import 'package:fakestore/features/domain/enums/storage.dart';
 import 'package:fakestore/features/presentation/universal_components/product_cards/list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class ProductListingLoadedPage extends StatelessWidget {
   final  UserModel user;
@@ -20,8 +16,6 @@ class ProductListingLoadedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<ProductListingCubit>();
     final state = cubit.state as ProductListingLoadedState;
-
-    print('loaded');
 
     return Scaffold(
       appBar: PreferredSize(

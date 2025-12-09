@@ -40,8 +40,7 @@ class ThemeManager extends ChangeNotifier {
   static void toggleTheme() {
     final isDark = _currentTheme!.brightness == Brightness.dark;
     _currentTheme = isDark ? _darkTheme : _defaultTheme;
-
-    print(_currentTheme!.brightness);
+    
     _instance.notifyListeners();
   }
 

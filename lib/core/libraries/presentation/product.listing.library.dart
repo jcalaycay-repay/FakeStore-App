@@ -4,12 +4,10 @@ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:equatable/equatable.dart';
-import 'package:fakestore/core/local_storages/cache.dart';
 import 'package:fakestore/features/data/models/product/product.model.dart';
 import 'package:fakestore/features/data/models/user/user.model.dart';
 import 'package:fakestore/features/data/repositories/product.dart';
 import 'package:fakestore/features/domain/enums/input.type.dart';
-import 'package:fakestore/features/domain/enums/storage.dart';
 import 'package:fakestore/features/domain/enums/validator.dart';
 import 'package:fakestore/features/presentation/pages/product.listing/loaded.dart';
 import 'package:fakestore/features/presentation/universal_components/custom.form.dart';

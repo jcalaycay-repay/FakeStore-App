@@ -5,17 +5,8 @@ class SignupPage extends StatelessWidget {
 
 
   @override
-  Widget build(BuildContext context) {
-    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-    
-    final accountContext = context.read<AccountPageCubit>();
+  Widget build(BuildContext context) { final accountContext = context.read<AccountPageCubit>();
     final signupState = (accountContext.state as SignupState);
-    final screen = MediaQuery.sizeOf(context);
-
-    final FocusNode usernameNode = FocusNode();
-    final FocusNode emailNode = FocusNode();
-    final FocusNode passwordNode = FocusNode();
-    final FocusNode confirmPasswordNode = FocusNode();
 
     return Scaffold(
       body: Center(
