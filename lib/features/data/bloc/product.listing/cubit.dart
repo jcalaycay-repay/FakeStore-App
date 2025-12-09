@@ -19,6 +19,14 @@ class ProductListingCubit extends Cubit<ProductListingState> {
     );
   }
 
+  void uploadImage(String path) {
+    if(state is! ProductCreationState) return;
+
+    emit((state as ProductCreationState).copywith(
+      imagePath: path,
+    ));
+  }
+
   void loadDummyData() {
     emit(ProductCreationState(
       nameController: TextEditingController(text: 'Bocchi the Rock! Nendoroid'), 

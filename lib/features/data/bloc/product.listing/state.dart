@@ -78,6 +78,6 @@ class ProductCreationState extends ProductListingState {
     priceController,         
     descriptionController,
     categoryController,  
-    imagePath
+    imagePath,
   ];
 }

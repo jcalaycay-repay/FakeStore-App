@@ -8,7 +8,6 @@ class ProductListingForm extends StatefulWidget {
 }
 
 class _ProductListingFormState extends State<ProductListingForm> {
-  String? productImage;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -19,6 +18,11 @@ class _ProductListingFormState extends State<ProductListingForm> {
 
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Upload your Product'
+          ),
+        ),
         body: SingleChildScrollView(
           padding: EdgeInsets.all(16),
           child: CustomForm(
@@ -28,19 +32,20 @@ class _ProductListingFormState extends State<ProductListingForm> {
               Row(
                 spacing: 16,
                 children: [
-                  if (productImage != null)
+                  if (creationState.imagePath != null)
                     Expanded(
                       child: ClipRRect(
                         borderRadius: BorderRadiusGeometry.circular(16),
                         child: SizedBox(
                           height: 150,
-                          child: productImage!.contains('https://')
+                          child: creationState.imagePath!.contains('https://')
                               ? CachedNetworkImage(
-                                  imageUrl: productImage!,
-                                  fit: BoxFit.contain,
+                                  imageUrl: creationState.imagePath!,
+                                  fit: BoxFit.fitWidth,
                                 )
                               : Image.file(
-                                  File(productImage!),
+                                  File(creationState.imagePath!),
+                                  fit: BoxFit.cover,
                                   height: 200,
                                 ),
                         ),
@@ -51,9 +56,7 @@ class _ProductListingFormState extends State<ProductListingForm> {
                       source: ImageSource.gallery,
                       callback: (file) {
                         if (file == null) return;
-                        setState(() {
-                          productImage = file.path;
-                        });
+                         cubit.uploadImage(file.path);
                       },
                     ),
                   ),
@@ -91,7 +94,7 @@ class _ProductListingFormState extends State<ProductListingForm> {
         
                   FilledButton(
                     onPressed: () {
-                      if (formKey.currentState!.validate() && productImage != null) {
+                      if (formKey.currentState!.validate() && creationState.imagePath != null) {
                         cubit.uploadProduct();
                       }
                     },

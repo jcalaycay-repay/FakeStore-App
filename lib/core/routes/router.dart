@@ -5,7 +5,6 @@ final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>()
 
 
 final router = GoRouter(
-  
   navigatorKey: navigatorState,
   routes: [
     ShellRoute(

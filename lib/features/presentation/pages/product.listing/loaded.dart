@@ -29,12 +29,6 @@ class ProductListingLoadedPage extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(12),
           child: AppBar(
-            leading: InkWell(
-              onTap: () => Navigator.pop(context),
-              child: Icon(
-                Icons.chevron_left
-              ),
-            ),
             title: Text(
               'Store'
             ),
@@ -90,8 +84,8 @@ class ProductListingLoadedPage extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(width: 2, color: ThemeManager.dividerColor),
-                  left: BorderSide(width: 2, color: ThemeManager.dividerColor),
-                  right: BorderSide(width: 2, color: ThemeManager.dividerColor),
+                  // left: BorderSide(width: 2, color: ThemeManager.dividerColor),
+                  // right: BorderSide(width: 2, color: ThemeManager.dividerColor),
                 ),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(16),
